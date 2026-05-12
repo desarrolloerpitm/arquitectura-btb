@@ -1,5 +1,3 @@
-├── .github
-│   └── copilot-instructions.md
 ├── Back
 │   ├── .husky
 │   │   ├── _
@@ -55,7 +53,10 @@
 │   │   │   ├── estado-envios.js
 │   │   │   ├── estado.js
 │   │   │   ├── estados-novedades.js
-│   │   │   └── eventos-log.js
+│   │   │   ├── evento-mensajeria.js
+│   │   │   ├── eventos-log.js
+│   │   │   ├── grupos-validos-codigos-alternos.js
+│   │   │   └── tipos-planos.js
 │   │   ├── data
 │   │   │   └── excelJsData.js
 │   │   ├── decorators
@@ -90,6 +91,20 @@
 │   │   │   │   │       ├── generic-transfer.service.js
 │   │   │   │   │       └── swagger.yaml
 │   │   │   │   ├── logging
+│   │   │   │   │   ├── control-planos
+│   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   ├── filtros-fecha.helper.js
+│   │   │   │   │   │   │   └── filtros.helper.js
+│   │   │   │   │   │   ├── models
+│   │   │   │   │   │   │   ├── control-plano.model.js
+│   │   │   │   │   │   │   └── swagger.yaml
+│   │   │   │   │   │   ├── schemas
+│   │   │   │   │   │   │   ├── crear-control-plano.schema.js
+│   │   │   │   │   │   │   └── swagger.yaml
+│   │   │   │   │   │   ├── control-planos.controller.js
+│   │   │   │   │   │   ├── control-planos.routes.js
+│   │   │   │   │   │   ├── control-planos.service.js
+│   │   │   │   │   │   └── swagger.yaml
 │   │   │   │   │   ├── logging
 │   │   │   │   │   │   ├── models
 │   │   │   │   │   │   │   ├── log.model.js
@@ -196,7 +211,7 @@
 │   │   │   │   │   │   │   ├── actualizar-recibido.schema.js
 │   │   │   │   │   │   │   ├── actualizar-remision-factura.schema.js
 │   │   │   │   │   │   │   ├── actualizar-transportadora.schema.js
-│   │   │   │   │   │   │   ├── crear-pedido-multiple.schema.js
+│   │   │   │   │   │   │   ├── crear-transportadora-multiple.schema.js
 │   │   │   │   │   │   │   ├── crear-transportadora-pedido.schema.js
 │   │   │   │   │   │   │   └── swagger.yaml
 │   │   │   │   │   │   ├── swagger.yaml
@@ -256,12 +271,19 @@
 │   │   │   │   │   │   ├── parametrizacion-criterios.routes.js
 │   │   │   │   │   │   └── swagger.yaml
 │   │   │   │   │   ├── parametrizacion-empresas
+│   │   │   │   │   │   ├── helpers
+│   │   │   │   │   │   │   └── email-configuracion.helper.js
 │   │   │   │   │   │   ├── models
 │   │   │   │   │   │   │   ├── centro-operacion.model.js
 │   │   │   │   │   │   │   ├── parametrizacion-empresa.model.js
 │   │   │   │   │   │   │   └── swagger.yaml
+│   │   │   │   │   │   ├── schemas
+│   │   │   │   │   │   │   └── actualiza-centro-operacion.schema.js
+│   │   │   │   │   │   ├── services
+│   │   │   │   │   │   │   └── centros-operaciones.service.js
 │   │   │   │   │   │   ├── parametrizacion-empresas.controller.js
 │   │   │   │   │   │   ├── parametrizacion-empresas.routes.js
+│   │   │   │   │   │   ├── parametrizacion-empresas.service.js
 │   │   │   │   │   │   └── swagger.yaml
 │   │   │   │   │   ├── parametrizacion-pedidos
 │   │   │   │   │   │   ├── models
@@ -306,6 +328,8 @@
 │   │   │   │   │   │   │   ├── crear-notificacion.schema.js
 │   │   │   │   │   │   │   ├── marcar-leidas.schema.js
 │   │   │   │   │   │   │   └── swagger.yaml
+│   │   │   │   │   │   ├── services
+│   │   │   │   │   │   │   └── notificaciones-novedades.service.js
 │   │   │   │   │   │   ├── notificaciones.controller.js
 │   │   │   │   │   │   ├── notificaciones.routes.js
 │   │   │   │   │   │   ├── notificaciones.service.js
@@ -354,6 +378,7 @@
 │   │   │   │   │   │   │   ├── actualizar-pedido.helper.js
 │   │   │   │   │   │   │   ├── aprobar-pedido.helper.js
 │   │   │   │   │   │   │   ├── crear-pedido.helper.js
+│   │   │   │   │   │   │   ├── filtros-pedido-con-detalle.helper.js
 │   │   │   │   │   │   │   ├── filtros-por-estado.helper.js
 │   │   │   │   │   │   │   ├── filtros-por-usuario.helper.js
 │   │   │   │   │   │   │   ├── filtros-productos-cantidades.helper.js
@@ -371,6 +396,7 @@
 │   │   │   │   │   │   │   ├── actualizar-producto-pedido.schema.js
 │   │   │   │   │   │   │   ├── actualizar-validadores-pedido.schema.js
 │   │   │   │   │   │   │   ├── aprobar-pedido.schema.js
+│   │   │   │   │   │   │   ├── consulta-pedidos.schema.js
 │   │   │   │   │   │   │   ├── crear-pedido.schema.js
 │   │   │   │   │   │   │   ├── index.js
 │   │   │   │   │   │   │   └── swagger.yaml
@@ -449,20 +475,23 @@
 │   │   │   │   │   │   │   ├── actualizar-codigo-alterno.helper.js
 │   │   │   │   │   │   │   ├── actualizar-masivo-codigos-alternos.helper.js
 │   │   │   │   │   │   │   ├── actualizar-masivo-validaciones.helper.js
+│   │   │   │   │   │   │   ├── construir-control-cambios.helper.js
 │   │   │   │   │   │   │   ├── crear-masivo-validaciones.helper.js
 │   │   │   │   │   │   │   └── filtros.helper.js
 │   │   │   │   │   │   ├── models
 │   │   │   │   │   │   │   ├── codigo-alterno.model.js
 │   │   │   │   │   │   │   └── swagger.yaml
 │   │   │   │   │   │   ├── reports
+│   │   │   │   │   │   │   ├── generarExcelHomologaciones.js
 │   │   │   │   │   │   │   └── generarExcelHomologosInactivos.js
 │   │   │   │   │   │   ├── schemas
 │   │   │   │   │   │   │   ├── actualizar-codigo-alterno.schema.js
-│   │   │   │   │   │   │   ├── actualizar-producto-homologo-importar.schema.js
 │   │   │   │   │   │   │   ├── actualizar-producto-homologo.schema.js
+│   │   │   │   │   │   │   ├── confirmar-producto-homologo.schema.js
 │   │   │   │   │   │   │   ├── crear-codigo-alterno-schema.js
 │   │   │   │   │   │   │   ├── crear-masivo-codigo-alterno.schema.js
 │   │   │   │   │   │   │   ├── generar-productos-inactivos.schema.js
+│   │   │   │   │   │   │   ├── previsualizar-producto-homologo.schema.js
 │   │   │   │   │   │   │   └── swagger.yaml
 │   │   │   │   │   │   ├── services
 │   │   │   │   │   │   │   ├── buscar-productos-homologos-clinicas.service.js
@@ -632,6 +661,8 @@
 │   │   │       │   ├── pedidos.service.js
 │   │   │       │   └── swagger.yaml
 │   │   │       └── productos-homologos
+│   │   │           ├── schemes
+│   │   │           │   └── swagger.yaml
 │   │   │           ├── productos-homologos.controller.js
 │   │   │           ├── productos-homologos.routes.js
 │   │   │           ├── productos-homologos.service.js
@@ -656,6 +687,7 @@
 │   │   │   ├── crearReporteNovedades.js
 │   │   │   ├── desactivarFactorEmpaque.js
 │   │   │   ├── eliminarNotificaiconesLeidas.js
+│   │   │   ├── expirarControlPlanos.js
 │   │   │   ├── generarProductosInactivos.js
 │   │   │   ├── inactivarPedidosExpirados.js
 │   │   │   ├── index.js
@@ -667,6 +699,8 @@
 │   │   │   ├── entorno.util.js
 │   │   │   ├── errorPersonalizado.util.js
 │   │   │   ├── excelJsUtil.js
+│   │   │   ├── fechaLocal.util.js
+│   │   │   ├── filtros-fecha.util.js
 │   │   │   ├── normaliza-texto.util.js
 │   │   │   ├── numbers.util.js
 │   │   │   └── pagination.util.js
@@ -706,6 +740,7 @@
 │   │   │   │   ├── ServiceNode
 │   │   │   │   │   ├── CodigoAlternoService.js
 │   │   │   │   │   ├── ConductorService.js
+│   │   │   │   │   ├── ControlPanoService.js
 │   │   │   │   │   ├── EnviosService.js
 │   │   │   │   │   ├── genericService.js
 │   │   │   │   │   ├── LogisticaNota.js
@@ -734,7 +769,6 @@
 │   │   │   │   │   ├── ProveedorService.js
 │   │   │   │   │   ├── RefreshTokenService.js
 │   │   │   │   │   ├── RolService.js
-│   │   │   │   │   ├── TransportadoraPedido.js
 │   │   │   │   │   ├── TransportadoraPedidosService.js
 │   │   │   │   │   ├── TransportadoraService.js
 │   │   │   │   │   ├── UsuarioClinicaService.js
@@ -784,6 +818,7 @@
 │   │   │   │   ├── FormTransportadora.vue
 │   │   │   │   └── NotasTransportadora.vue
 │   │   │   ├── Modal
+│   │   │   │   ├── ErrorAprobarModal.vue
 │   │   │   │   ├── GuardarHomologacion.vue
 │   │   │   │   ├── MasInformacion.vue
 │   │   │   │   ├── ModalLoading.vue
@@ -805,6 +840,8 @@
 │   │   │   │   └── ResumenPedido.vue
 │   │   │   ├── Table
 │   │   │   │   └── DataTablePagination.vue
+│   │   │   ├── TrazabilidadPedido
+│   │   │   │   └── TrazabilidadPedido.vue
 │   │   │   ├── Avatar.vue
 │   │   │   ├── Footer.vue
 │   │   │   ├── SendEmail.vue
@@ -853,6 +890,7 @@
 │   │   │   │   ├── pedidos
 │   │   │   │   │   ├── useGestionNovedadesPermisos.js
 │   │   │   │   │   ├── useGestionPedidosPermisos.js
+│   │   │   │   │   ├── useOrdenCompraPermisos.js
 │   │   │   │   │   ├── usePendienteAprobacionPermisos.js
 │   │   │   │   │   └── useSeguimientoPedidoPermisos.js
 │   │   │   │   └── users
@@ -863,6 +901,7 @@
 │   │   │   ├── useFiltrosLimpieza.js
 │   │   │   ├── useListaSucursales.js
 │   │   │   ├── usePaginacion.js
+│   │   │   ├── useParametrizacionSucursales.js
 │   │   │   ├── useScroll.js
 │   │   │   ├── useValidacionSucursalPedido.js
 │   │   │   └── useValidarItemPedido.js
@@ -871,6 +910,7 @@
 │   │   ├── constants
 │   │   │   ├── codigosAlternos.js
 │   │   │   ├── enviosPedidos.js
+│   │   │   ├── eventosMensajes.js
 │   │   │   ├── novedad.js
 │   │   │   ├── pedido.js
 │   │   │   ├── rutasCambiosSinGuardar.js
@@ -1010,11 +1050,13 @@
 │   │   │   │   │   │   │   ├── Mensajeria.vue
 │   │   │   │   │   │   │   └── Servicios.vue
 │   │   │   │   │   │   ├── Card
-│   │   │   │   │   │   │   ├── EmailDentinatarios.vue
+│   │   │   │   │   │   │   ├── EmailDestinatarios.vue
 │   │   │   │   │   │   │   ├── Logotipo.vue
 │   │   │   │   │   │   │   └── Tema.vue
 │   │   │   │   │   │   ├── Partials
 │   │   │   │   │   │   │   └── SubTitulo.vue
+│   │   │   │   │   │   ├── Table
+│   │   │   │   │   │   │   └── EmailEventos.vue
 │   │   │   │   │   │   └── Index.vue
 │   │   │   │   │   ├── EditarSucursal
 │   │   │   │   │   │   ├── Modal
@@ -1219,14 +1261,14 @@
 │   │   │   │   │   │   └── LayoutImportarArchivoPlano.vue
 │   │   │   │   │   ├── reports
 │   │   │   │   │   │   ├── descargarPlanoCodigosReport.js
-│   │   │   │   │   │   ├── descargarPlanoHomologacion.js
 │   │   │   │   │   │   ├── subirPlanoCodigosReport.js
 │   │   │   │   │   │   └── subirPlanoHomologacion.js
 │   │   │   │   │   ├── Tab
 │   │   │   │   │   │   ├── TabCodigosAlternos.vue
 │   │   │   │   │   │   └── TabHomologacion.vue
 │   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── TableErrores.vue
+│   │   │   │   │   │   ├── TableErrores.vue
+│   │   │   │   │   │   └── TableImportacion.vue
 │   │   │   │   │   └── Index.vue
 │   │   │   │   ├── GestionOrdenes
 │   │   │   │   │   ├── Table
@@ -1320,7 +1362,8 @@
 │   │   │   │   │   │   ├── DetalleProducto.vue
 │   │   │   │   │   │   ├── NovedadesTable.vue
 │   │   │   │   │   │   └── ProductosPedido.vue
-│   │   │   │   │   └── Index.vue
+│   │   │   │   │   ├── Index.vue
+│   │   │   │   │   └── TrazabilidadPedidoLogistica.vue
 │   │   │   │   └── DocumentoDetalleFactura.vue
 │   │   │   ├── Logs
 │   │   │   │   ├── Log
@@ -1351,8 +1394,10 @@
 │   │   │   │       │   │   └── ModalEliminarUsuario.vue
 │   │   │   │       │   ├── ModalAgregarSucursales.vue
 │   │   │   │       │   ├── ModalAprobarPedido.vue
+│   │   │   │       │   ├── ModalCambiarProducto.vue
 │   │   │   │       │   ├── ModalCrearRol.vue
 │   │   │   │       │   ├── ModalDeshabilitarPeriodos.vue
+│   │   │   │       │   ├── ModalDetalleLogistica.vue
 │   │   │   │       │   ├── ModalEditarFactorEmpaque.vue
 │   │   │   │       │   ├── ModalEditarPeriodos.vue
 │   │   │   │       │   ├── ModalEditarProductoDesabastecido.vue
@@ -1400,8 +1445,7 @@
 │   │   │   │   │   │   └── ListarNovedadesForm.vue
 │   │   │   │   │   ├── helpers
 │   │   │   │   │   │   ├── novedadesHelper.js
-│   │   │   │   │   │   ├── productosHelper.js
-│   │   │   │   │   │   └── validarSucursalYCentroOperacionHelper.js
+│   │   │   │   │   │   └── productosHelper.js
 │   │   │   │   │   ├── Modal
 │   │   │   │   │   │   └── VerNovedad.vue
 │   │   │   │   │   ├── Partials
@@ -1409,7 +1453,8 @@
 │   │   │   │   │   ├── Table
 │   │   │   │   │   │   ├── Novedades.vue
 │   │   │   │   │   │   └── ProductosNovedad.vue
-│   │   │   │   │   └── Index.vue
+│   │   │   │   │   ├── Index.vue
+│   │   │   │   │   └── TrazabilidadPedidoNovedades.vue
 │   │   │   │   ├── GestionPedido
 │   │   │   │   │   ├── composables
 │   │   │   │   │   │   ├── useGestionPedido.js
@@ -1435,6 +1480,8 @@
 │   │   │   │   ├── Historial
 │   │   │   │   │   ├── Form
 │   │   │   │   │   │   └── ListarPedidos.vue
+│   │   │   │   │   ├── helpers
+│   │   │   │   │   │   └── historialHelper.js
 │   │   │   │   │   ├── Modal
 │   │   │   │   │   │   ├── MasInformacion.vue
 │   │   │   │   │   │   ├── Pendientes.vue
@@ -1452,9 +1499,10 @@
 │   │   │   │   │   ├── Card
 │   │   │   │   │   │   └── SugerenciasCard.vue
 │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── descargar-plano-pedido.helper.js
-│   │   │   │   │   │   ├── productos-pedido.js
-│   │   │   │   │   │   └── subir-plano-pedido.helper.js
+│   │   │   │   │   │   └── productos-pedido.js
+│   │   │   │   │   ├── reports
+│   │   │   │   │   │   ├── descargarExcelPedido.js
+│   │   │   │   │   │   └── subirExcelPedido.js
 │   │   │   │   │   └── Index.vue
 │   │   │   │   ├── PendienteAprobacion
 │   │   │   │   │   ├── Form
