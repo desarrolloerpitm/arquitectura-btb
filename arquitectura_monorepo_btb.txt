@@ -1,16 +1,28 @@
+├── .env
+├── .gitignore
 ├── .scannerwork
 │   ├── .sonar_lock
 │   └── report-task.txt
 ├── Back
+│   ├── .babelrc
+│   ├── .dockerignore
+│   ├── .env.ceinme
+│   ├── .env.cfim
+│   ├── .env.dev
+│   ├── .eslintignore
+│   ├── .eslintrc.json
+│   ├── .gitignore
 │   ├── .husky
-│   │   ├── _
-│   │   │   ├── .gitignore
-│   │   │   └── husky.sh
-│   │   └── pre-commit
+│   │   ├── pre-commit
+│   │   └── _
+│   │       ├── .gitignore
+│   │       └── husky.sh
+│   ├── .prettierrc
 │   ├── assets
 │   │   └── logos
 │   │       ├── avatar.jpg
 │   │       └── cfim.png
+│   ├── Dockerfile
 │   ├── emails
 │   │   ├── DevolucionPedido
 │   │   │   └── html.pug
@@ -42,846 +54,860 @@
 │   │   │   └── html.pug
 │   │   └── usuarios
 │   │       └── html.pug
-│   ├── public
-│   │   └── downloads
-│   ├── src
-│   │   ├── API
-│   │   │   └── ApiURL.js
-│   │   ├── config
-│   │   │   ├── schemas
-│   │   │   │   └── envs.schema.js
-│   │   │   ├── axios.config.js
-│   │   │   ├── axiosConfig.js
-│   │   │   ├── config.js
-│   │   │   ├── database.js
-│   │   │   ├── redisClient.js
-│   │   │   ├── redisClientWithReconnect.js
-│   │   │   ├── swaggerOptions.js
-│   │   │   └── websocketOptions.js
-│   │   ├── constants
-│   │   │   ├── estado-envios.js
-│   │   │   ├── estado-usuario.js
-│   │   │   ├── estado.js
-│   │   │   ├── estados-novedades.js
-│   │   │   ├── evento-mensajeria.js
-│   │   │   ├── eventos-log.js
-│   │   │   ├── grupos-validos-codigos-alternos.js
-│   │   │   └── tipos-planos.js
-│   │   ├── custom
-│   │   │   └── swagger
-│   │   │       ├── swagger-dinamico.js
-│   │   │       ├── swagger-public-client.js
-│   │   │       └── swagger-ui-options.js
-│   │   ├── data
-│   │   │   └── excelJsData.js
-│   │   ├── decorators
-│   │   │   ├── headersExcelJsDecorator.js
-│   │   │   └── tableExcelJsDecorator.js
-│   │   ├── events
-│   │   │   ├── eventEmitter.js
-│   │   │   ├── listeners.js
-│   │   │   ├── pedidosListeners.js
-│   │   │   └── pedidosNovedadesListeners.js
-│   │   ├── middlewares
-│   │   │   ├── auth-apikey-public.middleware.js
-│   │   │   ├── auth-public.middleware.js
-│   │   │   ├── auth.js
-│   │   │   ├── cacheMiddleware.js
-│   │   │   ├── canal.middleware.js
-│   │   │   ├── correlation-id.middleware.js
-│   │   │   ├── errorHandler.js
-│   │   │   ├── forgotPassword.js
-│   │   │   ├── idempotency.middleware.js
-│   │   │   ├── log-consumo-publico.middleware.js
-│   │   │   ├── rate-limiter.middleware.js
-│   │   │   ├── timestamp.middleware.js
-│   │   │   ├── validationErrorHandler.js
-│   │   │   ├── validationHandler.js
-│   │   │   └── validationJsonSyntaxErrorHandler.js
-│   │   ├── modules
-│   │   │   ├── internals
-│   │   │   │   ├── integrations
-│   │   │   │   │   ├── api-documentos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── archivo-logs.helper.js
-│   │   │   │   │   │   └── archivo-logs.service.js
-│   │   │   │   │   ├── api-municipios
-│   │   │   │   │   │   ├── api-municipios.controller.js
-│   │   │   │   │   │   ├── api-municipios.routes.js
-│   │   │   │   │   │   ├── api-municipios.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   └── generic-transfer
-│   │   │   │   │       ├── generic-transfer.controller.js
-│   │   │   │   │       ├── generic-transfer.routes.js
-│   │   │   │   │       ├── generic-transfer.service.js
-│   │   │   │   │       └── swagger.yaml
-│   │   │   │   ├── logging
-│   │   │   │   │   ├── control-planos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── filtros-fecha.helper.js
-│   │   │   │   │   │   │   └── filtros.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── control-plano.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── crear-control-plano.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── control-planos.controller.js
-│   │   │   │   │   │   ├── control-planos.routes.js
-│   │   │   │   │   │   ├── control-planos.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── logging
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── log.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── logs.controller.js
-│   │   │   │   │   │   ├── logs.routes.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── logging-modulos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── filtros-por-modulo.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── log-modulo.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── log-modulos.service.js
-│   │   │   │   │   │   ├── logs-modulos.controller.js
-│   │   │   │   │   │   ├── logs-modulos.routes.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── logs-consumo-publico
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── filtrar-buscar-todos.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── log-consumo-publico.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── logs-consumo-publico.controller.js
-│   │   │   │   │   │   ├── logs-consumo-publico.routes.js
-│   │   │   │   │   │   ├── logs-consumo-publico.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   └── logs-sesion
-│   │   │   │   │       ├── helpers
-│   │   │   │   │       │   └── filtros-por-fechas.js
-│   │   │   │   │       ├── models
-│   │   │   │   │       │   ├── log-sesion.model.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── reports
-│   │   │   │   │       │   └── generar-excel-logs-sesion.js
-│   │   │   │   │       ├── logs-sesion.controller.js
-│   │   │   │   │       ├── logs-sesion.routes.js
-│   │   │   │   │       ├── logs-sesion.service.js
-│   │   │   │   │       └── swagger.yaml
-│   │   │   │   ├── logistica
-│   │   │   │   │   ├── conductores
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── actualizar-conductor.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── conductor.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-conductor.schema.js
-│   │   │   │   │   │   │   ├── crear-conductor.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── conductores.controller.js
-│   │   │   │   │   │   ├── conductores.routes.js
-│   │   │   │   │   │   ├── conductores.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── envios
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── envio.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-envio.schema.js
-│   │   │   │   │   │   │   ├── crear-envio.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── envios.controller.js
-│   │   │   │   │   │   ├── envios.routes.js
-│   │   │   │   │   │   ├── envios.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── envios-sucursales
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── envio-sucursal.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── envio-sucursal.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-envios-con-sucursales.schema.js
-│   │   │   │   │   │   │   ├── actualizar-envios-sucursales.schema.js
-│   │   │   │   │   │   │   ├── crear-envios-sucursales.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── envios-sucursales.controller.js
-│   │   │   │   │   │   ├── envios-sucursales.routes.js
-│   │   │   │   │   │   ├── envios-sucursales.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── notas
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── nota.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── crear-nota.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── notas.controller.js
-│   │   │   │   │   │   ├── notas.routes.js
-│   │   │   │   │   │   ├── notas.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── transportadoras
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── actualizar-transportadora.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── swagger.yaml
-│   │   │   │   │   │   │   └── transportadora.model.js
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-transportadora.schema.js
-│   │   │   │   │   │   │   ├── crear-transportadora.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── swagger.yaml
-│   │   │   │   │   │   ├── transportadoras.controller.js
-│   │   │   │   │   │   ├── transportadoras.routes.js
-│   │   │   │   │   │   └── transportadoras.service.js
-│   │   │   │   │   ├── transportadoras-pedidos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── filtros.helper.js
-│   │   │   │   │   │   │   └── log-pedido.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── swagger.yaml
-│   │   │   │   │   │   │   └── transportadora-pedido.model.js
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-recibido-multiple.schema.js
-│   │   │   │   │   │   │   ├── actualizar-recibido.schema.js
-│   │   │   │   │   │   │   ├── actualizar-remision-factura.schema.js
-│   │   │   │   │   │   │   ├── actualizar-transportadora.schema.js
-│   │   │   │   │   │   │   ├── crear-transportadora-multiple.schema.js
-│   │   │   │   │   │   │   ├── crear-transportadora-pedido.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── swagger.yaml
-│   │   │   │   │   │   ├── transportadoras-pedidos.controller.js
-│   │   │   │   │   │   ├── transportadoras-pedidos.routes.js
-│   │   │   │   │   │   └── transportadoras-pedidos.service.js
-│   │   │   │   │   ├── vehiculos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── actualizar-vehiculo.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── swagger.yaml
-│   │   │   │   │   │   │   └── vehiculo.model.js
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-vehiculo.schema.js
-│   │   │   │   │   │   │   ├── crear-vehiculo.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── swagger.yaml
-│   │   │   │   │   │   ├── vehiculos.controller.js
-│   │   │   │   │   │   ├── vehiculos.routes.js
-│   │   │   │   │   │   └── vehiculos.service.js
-│   │   │   │   │   └── zonas
-│   │   │   │   │       ├── helpers
-│   │   │   │   │       │   ├── actualizar-zona.helper.js
-│   │   │   │   │       │   └── filtros.helper.js
-│   │   │   │   │       ├── models
-│   │   │   │   │       │   ├── swagger.yaml
-│   │   │   │   │       │   └── zona.model.js
-│   │   │   │   │       ├── schemas
-│   │   │   │   │       │   ├── actualizar-zona.schema.js
-│   │   │   │   │       │   ├── crear-zona.schema.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── swagger.yaml
-│   │   │   │   │       ├── zonas.controller.js
-│   │   │   │   │       ├── zonas.routes.js
-│   │   │   │   │       └── zonas.service.js
-│   │   │   │   ├── parametrizacion
-│   │   │   │   │   ├── bodegas-tipos-inventario
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── bodega-tipo-inventario.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-bodegas-tipos-Inventario.schema.js
-│   │   │   │   │   │   │   ├── crear-bodegas-tipos-Inventario.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── bodegas-tipos-Inventario.controller.js
-│   │   │   │   │   │   ├── bodegas-tipos-inventario.routes.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── parametrizacion-criterios
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── parametrizacion-criterio.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-parametrizacion-criterio.schema.js
-│   │   │   │   │   │   │   ├── crear-parametrizacion-criterio.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── parametrizacion-criterios.controller.js
-│   │   │   │   │   │   ├── parametrizacion-criterios.routes.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── parametrizacion-empresas
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── email-configuracion.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── centro-operacion.model.js
-│   │   │   │   │   │   │   ├── parametrizacion-empresa.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   └── actualiza-centro-operacion.schema.js
-│   │   │   │   │   │   ├── services
-│   │   │   │   │   │   │   └── centros-operaciones.service.js
-│   │   │   │   │   │   ├── parametrizacion-empresas.controller.js
-│   │   │   │   │   │   ├── parametrizacion-empresas.routes.js
-│   │   │   │   │   │   ├── parametrizacion-empresas.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── parametrizacion-grupos-codigos-alternos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── filtros.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-grupo-codigo-alterno.schema.js
-│   │   │   │   │   │   │   ├── crear-grupo-codigo-alterno.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.controller.js
-│   │   │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.routes.js
-│   │   │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── parametrizacion-pedidos
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── parametrizacion-pedido.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-consecutivo-siesa.schema.js
-│   │   │   │   │   │   │   ├── actualizar-parametrizacion-pedido.schema.js
-│   │   │   │   │   │   │   ├── crear-parametrizacion-pedido.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── parametrizacion-pedidos.controller.js
-│   │   │   │   │   │   ├── parametrizacion-pedidos.routes.js
-│   │   │   │   │   │   ├── parametrizacion-pedidos.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── parametrizacion-sucursales
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── parametrizacion-sucursal.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-sucursal.schema.js
-│   │   │   │   │   │   │   ├── crear-sucursal.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── parametrizacion-sucursales.controller.js
-│   │   │   │   │   │   ├── parametrizacion-sucursales.routes.js
-│   │   │   │   │   │   ├── parametrizacion-sucursales.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   └── parametros-control
-│   │   │   │   │       ├── models
-│   │   │   │   │       │   ├── parametros-control.model.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── parametros-control.controller.js
-│   │   │   │   │       ├── parametros-control.routes.js
-│   │   │   │   │       └── swagger.yaml
-│   │   │   │   ├── pedidos
-│   │   │   │   │   ├── notificaciones
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   └── filtros.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── notificacion.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── crear-notificacion.schema.js
-│   │   │   │   │   │   │   ├── marcar-leidas.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── services
-│   │   │   │   │   │   │   └── notificaciones-novedades.service.js
-│   │   │   │   │   │   ├── notificaciones.controller.js
-│   │   │   │   │   │   ├── notificaciones.routes.js
-│   │   │   │   │   │   ├── notificaciones.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── novedades
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── aprobar-pedido-novedad.helper.js
-│   │   │   │   │   │   │   └── interfazar-pedidos-novedades.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── novedad.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── crear-novedad.schema.js
-│   │   │   │   │   │   │   ├── finalizar-novedad.schema.js
-│   │   │   │   │   │   │   ├── rechazar-productos-novedad.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── services
-│   │   │   │   │   │   │   └── finalizar-novedad.service.js
-│   │   │   │   │   │   ├── novedades.controller.js
-│   │   │   │   │   │   ├── novedades.routes.js
-│   │   │   │   │   │   ├── novedades.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── ordenes-compra
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── crear-orden-compra.helper.js
-│   │   │   │   │   │   │   └── filtros-buscar-todos.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── ordenes-compra.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── crear-ordenes-compra.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── ordenes-compra.controller.js
-│   │   │   │   │   │   ├── ordenes-compra.routes.js
-│   │   │   │   │   │   ├── ordenes-compra.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── pedidos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── crear-pedidos-clinicas
-│   │   │   │   │   │   │   │   ├── construir-orden-compra.helper.js
-│   │   │   │   │   │   │   │   ├── preparar-pedido-generic.helper.js
-│   │   │   │   │   │   │   │   ├── preparar-pedido-mongo.helper.js
-│   │   │   │   │   │   │   │   ├── validar-codigos-alternos-productos.helper.js
-│   │   │   │   │   │   │   │   ├── validar-factor-empaque.helper.js
-│   │   │   │   │   │   │   │   ├── validar-productos.helper.js
-│   │   │   │   │   │   │   │   └── validar-sucursales-clinicas.helper.js
-│   │   │   │   │   │   │   ├── actualizar-pedido.helper.js
-│   │   │   │   │   │   │   ├── aprobar-pedido.helper.js
-│   │   │   │   │   │   │   ├── crear-pedido.helper.js
-│   │   │   │   │   │   │   ├── filtros-pedido-con-detalle.helper.js
-│   │   │   │   │   │   │   ├── filtros-por-estado.helper.js
-│   │   │   │   │   │   │   ├── filtros-por-usuario.helper.js
-│   │   │   │   │   │   │   ├── filtros-productos-cantidades.helper.js
-│   │   │   │   │   │   │   ├── filtros.helper.js
-│   │   │   │   │   │   │   ├── interfazar-pedidos.helper.js
-│   │   │   │   │   │   │   └── pedidos-activos.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── pedido.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-estado-pedido.schema.js
-│   │   │   │   │   │   │   ├── actualizar-pedido-desabastecidos.schema.js
-│   │   │   │   │   │   │   ├── actualizar-pedido-proveedor.schema.js
-│   │   │   │   │   │   │   ├── actualizar-pedido.schema.js
-│   │   │   │   │   │   │   ├── actualizar-producto-pedido.schema.js
-│   │   │   │   │   │   │   ├── actualizar-validadores-pedido.schema.js
-│   │   │   │   │   │   │   ├── aprobar-pedido.schema.js
-│   │   │   │   │   │   │   ├── consulta-pedidos.schema.js
-│   │   │   │   │   │   │   ├── crear-pedido.schema.js
-│   │   │   │   │   │   │   ├── index.js
-│   │   │   │   │   │   │   ├── preaprobar-pedido.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── services
-│   │   │   │   │   │   │   ├── buscar-productos-cantidades.service.js
-│   │   │   │   │   │   │   ├── crear-pedido-clinicas.service.js
-│   │   │   │   │   │   │   ├── crear-pedido.service.js
-│   │   │   │   │   │   │   └── notificaciones-pedidos.service.js
-│   │   │   │   │   │   ├── pedidos.controller.js
-│   │   │   │   │   │   ├── pedidos.routes.js
-│   │   │   │   │   │   ├── pedidos.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── pedidos-devoluciones
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── pedido-devolucion.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── crear-pedido-devolucion.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── pedidos-devoluciones.controller.js
-│   │   │   │   │   │   ├── pedidos-devoluciones.routes.js
-│   │   │   │   │   │   ├── pedidos-devoluciones.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── pedidos-reordenados
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── pedido-reordenado.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-pedido-reordenado.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── pedidos-reordenados.controller.js
-│   │   │   │   │   │   ├── pedidos-reordenados.routes.js
-│   │   │   │   │   │   ├── pedidos-reordenados.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── periodos-sucursales
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── detalle-periodos-sucursales.helper.js
-│   │   │   │   │   │   │   ├── periodo-todas-sucursales.schema.js
-│   │   │   │   │   │   │   └── periodos.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── periodo-sucursal.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-estado-compania.schema.js
-│   │   │   │   │   │   │   ├── actualizar-estado-sucursal.schema.js
-│   │   │   │   │   │   │   ├── agregar-periodo-sucursal.schema.js
-│   │   │   │   │   │   │   ├── agregar-periodo-todas-sucursales.schema.js
-│   │   │   │   │   │   │   ├── agregar-sucursal.schema.js
-│   │   │   │   │   │   │   ├── crear-compania.schema.js
-│   │   │   │   │   │   │   ├── deshabilitar-periodo-todas-sucursales.schema.js
-│   │   │   │   │   │   │   ├── editar-periodo-sucursal.schema.js
-│   │   │   │   │   │   │   ├── eliminar-sucursal.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── periodos-sucursales.controller.js
-│   │   │   │   │   │   ├── periodos-sucursales.routes.js
-│   │   │   │   │   │   ├── periodos-sucursales.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   └── tipos-inventarios
-│   │   │   │   │       ├── models
-│   │   │   │   │       │   ├── swagger.yaml
-│   │   │   │   │       │   └── tipos-inventarios.model.js
-│   │   │   │   │       ├── schemas
-│   │   │   │   │       │   ├── actualizar-tipo-inventario.schema.js
-│   │   │   │   │       │   ├── crear-tipo-inventario.schema.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── swagger.yaml
-│   │   │   │   │       ├── tipos-inventarios.controller.js
-│   │   │   │   │       ├── tipos-inventarios.routes.js
-│   │   │   │   │       └── tipos-inventarios.service.js
-│   │   │   │   ├── productos
-│   │   │   │   │   ├── codigos-alternos
-│   │   │   │   │   │   ├── helpers
-│   │   │   │   │   │   │   ├── reporte-homologos-inactivos
-│   │   │   │   │   │   │   │   └── obtener-lista-precios.helper.js
-│   │   │   │   │   │   │   ├── actualizar-codigo-alterno.helper.js
-│   │   │   │   │   │   │   ├── actualizar-masivo-codigos-alternos.helper.js
-│   │   │   │   │   │   │   ├── actualizar-masivo-validaciones.helper.js
-│   │   │   │   │   │   │   ├── construir-control-cambios.helper.js
-│   │   │   │   │   │   │   ├── crear-masivo-validaciones.helper.js
-│   │   │   │   │   │   │   ├── filtros.helper.js
-│   │   │   │   │   │   │   └── grupos-codigos-alternos.helper.js
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── codigo-alterno.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── reports
-│   │   │   │   │   │   │   ├── generarExcelHomologaciones.js
-│   │   │   │   │   │   │   └── generarExcelHomologosInactivos.js
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-codigo-alterno.schema.js
-│   │   │   │   │   │   │   ├── actualizar-producto-homologo.schema.js
-│   │   │   │   │   │   │   ├── confirmar-producto-homologo.schema.js
-│   │   │   │   │   │   │   ├── crear-codigo-alterno-schema.js
-│   │   │   │   │   │   │   ├── crear-masivo-codigo-alterno.schema.js
-│   │   │   │   │   │   │   ├── generar-productos-inactivos.schema.js
-│   │   │   │   │   │   │   ├── previsualizar-producto-homologo.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── services
-│   │   │   │   │   │   │   ├── buscar-productos-homologos-clinicas.service.js
-│   │   │   │   │   │   │   ├── buscar-sucursales-clinicas.service.js
-│   │   │   │   │   │   │   └── generar-homologos-inactivos-clinicas.service.js
-│   │   │   │   │   │   ├── codigos-alternos.controller.js
-│   │   │   │   │   │   ├── codigos-alternos.routes.js
-│   │   │   │   │   │   ├── codigos-alternos.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── factores-empaque
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── factor-empaque.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-factor-empaque.schema.js
-│   │   │   │   │   │   │   ├── crear-factor-empaque.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── factores-empaque.controller.js
-│   │   │   │   │   │   ├── factores-empaque.routes.js
-│   │   │   │   │   │   ├── factores-empaque.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── portafolios
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── portafolio.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-portafolio.schema.js
-│   │   │   │   │   │   │   ├── crear-portafolio.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── portafolios.controller.js
-│   │   │   │   │   │   ├── portafolios.routes.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── portafolios-sucursales
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── portafolio-sucursal.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── crear-portafolio-sucursales.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── portafolios-sucursales.controller.js
-│   │   │   │   │   │   ├── portafolios-sucursales.routes.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── productos
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── producto.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── productos.controller.js
-│   │   │   │   │   │   ├── productos.routes.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   ├── productos-desabastecidos
-│   │   │   │   │   │   ├── models
-│   │   │   │   │   │   │   ├── producto-desabastecido.model.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── schemas
-│   │   │   │   │   │   │   ├── actualizar-producto-desabastecido.schema.js
-│   │   │   │   │   │   │   ├── cambiar-estado-producto-desabastecido.schema.js
-│   │   │   │   │   │   │   ├── crear-producto-desabastecido.schema.js
-│   │   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   │   ├── productos-desabastecidos.controller.js
-│   │   │   │   │   │   ├── productos-desabastecidos.routes.js
-│   │   │   │   │   │   ├── productos-desabastecidos.service.js
-│   │   │   │   │   │   └── swagger.yaml
-│   │   │   │   │   └── productos-proveedores
-│   │   │   │   │       ├── models
-│   │   │   │   │       │   ├── producto-proveedor.model.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── schemas
-│   │   │   │   │       │   ├── actualizar-producto-proveedor.schema.js
-│   │   │   │   │       │   ├── crear-producto-proveedor.schema.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── productos-proveedores.controller.js
-│   │   │   │   │       ├── productos-proveedores.routes.js
-│   │   │   │   │       ├── productos-proveedores.service.js
-│   │   │   │   │       └── swagger.yaml
-│   │   │   │   ├── refresh-token
-│   │   │   │   │   ├── refresh-token.controller.js
-│   │   │   │   │   ├── refresh-token.routes.js
-│   │   │   │   │   ├── refresh-token.service.js
-│   │   │   │   │   └── swagger.yaml
-│   │   │   │   ├── terceros
-│   │   │   │   │   └── proveedores
-│   │   │   │   │       ├── models
-│   │   │   │   │       │   ├── proveedor.model.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── schemas
-│   │   │   │   │       │   ├── actualizar-proveedor.schema.js
-│   │   │   │   │       │   ├── crear-proveedor.schema.js
-│   │   │   │   │       │   └── swagger.yaml
-│   │   │   │   │       ├── proveedores.controller.js
-│   │   │   │   │       ├── proveedores.routes.js
-│   │   │   │   │       ├── proveedores.service.js
-│   │   │   │   │       └── swagger.yaml
-│   │   │   │   └── usuarios
-│   │   │   │       ├── roles
-│   │   │   │       │   ├── helpers
-│   │   │   │       │   │   ├── actualizar-rol.helper.js
-│   │   │   │       │   │   └── crear-rol.helper.js
-│   │   │   │       │   ├── models
-│   │   │   │       │   │   ├── roles.model.js
-│   │   │   │       │   │   └── swagger.yaml
-│   │   │   │       │   ├── schemas
-│   │   │   │       │   │   ├── actualizar-rol.schema.js
-│   │   │   │       │   │   ├── crear-rol.schema.js
-│   │   │   │       │   │   └── swagger.yaml
-│   │   │   │       │   ├── roles.controller.js
-│   │   │   │       │   ├── roles.routes.js
-│   │   │   │       │   ├── roles.service.js
-│   │   │   │       │   └── swagger.yaml
-│   │   │   │       ├── roles-api
-│   │   │   │       │   ├── models
-│   │   │   │       │   │   ├── rol-api.model.js
-│   │   │   │       │   │   └── swagger.yaml
-│   │   │   │       │   ├── schemas
-│   │   │   │       │   │   ├── actualizar-rol-api.schema.js
-│   │   │   │       │   │   ├── crear-rol-api.schema.js
-│   │   │   │       │   │   └── swagger.yaml
-│   │   │   │       │   ├── roles-api.controller.js
-│   │   │   │       │   ├── roles-api.routes.js
-│   │   │   │       │   ├── roles-api.service.js
-│   │   │   │       │   └── swagger.yaml
-│   │   │   │       ├── usuarios
-│   │   │   │       │   ├── helpers
-│   │   │   │       │   │   ├── actualizar-usuario.helper.js
-│   │   │   │       │   │   ├── crear-usuario.helper.js
-│   │   │   │       │   │   ├── eliminar-usuario.helper.js
-│   │   │   │       │   │   ├── login.helper.js
-│   │   │   │       │   │   └── validar-perfil.helper.js
-│   │   │   │       │   ├── models
-│   │   │   │       │   │   ├── swagger.yaml
-│   │   │   │       │   │   └── usuario.model.js
-│   │   │   │       │   ├── schemas
-│   │   │   │       │   │   ├── activar-inactivar-usuario.schema.js
-│   │   │   │       │   │   ├── actualizar-contrasena-usuario.schema.js
-│   │   │   │       │   │   ├── actualizar-perfil-usuario.schema.js
-│   │   │   │       │   │   ├── actualizar-usuario.schema.js
-│   │   │   │       │   │   ├── crear-usuario.schema.js
-│   │   │   │       │   │   ├── eliminar-usuario.schema.js
-│   │   │   │       │   │   ├── iniciar-sesion.schema.js
-│   │   │   │       │   │   ├── olvidar-contrasena.schema.js
-│   │   │   │       │   │   └── swagger.yaml
-│   │   │   │       │   ├── swagger.yaml
-│   │   │   │       │   ├── usuarios.controller.js
-│   │   │   │       │   ├── usuarios.routes.js
-│   │   │   │       │   └── usuarios.service.js
-│   │   │   │       └── usuarios-api
-│   │   │   │           ├── helpers
-│   │   │   │           │   ├── actualizar-usuario-api.helper.js
-│   │   │   │           │   └── crear-usuario-api.helper.js
-│   │   │   │           ├── models
-│   │   │   │           │   ├── swagger.yaml
-│   │   │   │           │   └── usuario-api.model.js
-│   │   │   │           ├── schema
-│   │   │   │           │   ├── actualizar-usuario-api.schema.js
-│   │   │   │           │   ├── crear-usuario-api.schema.js
-│   │   │   │           │   └── swagger.yaml
-│   │   │   │           ├── swagger.yaml
-│   │   │   │           ├── usuarios-api.controller.js
-│   │   │   │           ├── usuarios-api.routes.js
-│   │   │   │           └── usuarios-api.service.js
-│   │   │   ├── provedores
-│   │   │   │   └── api-data-erp
-│   │   │   │       └── api-data-municipios.service.js
-│   │   │   ├── proveedores
-│   │   │   │   └── connekta
-│   │   │   │       ├── helpers
-│   │   │   │       │   ├── contruir-url-connekta.helper.js
-│   │   │   │       │   └── filtros-connekta.helper.js
-│   │   │   │       ├── schema
-│   │   │   │       │   └── connekta.schema.js
-│   │   │   │       ├── connekta.controller.js
-│   │   │   │       ├── connekta.routes.js
-│   │   │   │       ├── connekta.service.js
-│   │   │   │       └── swagger.yaml
-│   │   │   └── publics
-│   │   │       ├── auth
-│   │   │       │   ├── schemes
-│   │   │       │   │   ├── iniciar-sesion.schema.js
-│   │   │       │   │   └── swagger.yaml
-│   │   │       │   ├── auth.controller.js
-│   │   │       │   ├── auth.routes.js
-│   │   │       │   ├── auth.service.js
-│   │   │       │   └── swagger.yaml
-│   │   │       ├── connekta
-│   │   │       │   ├── schema
-│   │   │       │   │   └── connekta.schema.js
-│   │   │       │   ├── connekta.controller.js
-│   │   │       │   ├── connekta.routes.js
-│   │   │       │   ├── connekta.service.js
-│   │   │       │   └── swagger.yaml
-│   │   │       ├── pedidos
-│   │   │       │   ├── schemes
-│   │   │       │   │   ├── crear-pedido-clinica.schema.js
-│   │   │       │   │   └── swagger.yaml
-│   │   │       │   ├── pedidos.controller.js
-│   │   │       │   ├── pedidos.routes.js
-│   │   │       │   ├── pedidos.service.js
-│   │   │       │   └── swagger.yaml
-│   │   │       └── productos-homologos
-│   │   │           ├── schemes
-│   │   │           │   └── swagger.yaml
-│   │   │           ├── productos-homologos.controller.js
-│   │   │           ├── productos-homologos.routes.js
-│   │   │           ├── productos-homologos.service.js
-│   │   │           └── swagger.yaml
-│   │   ├── queues
-│   │   │   ├── connection.js
-│   │   │   ├── index.js
-│   │   │   └── pedidos.queue.js
-│   │   ├── routes
-│   │   │   ├── index.js
-│   │   │   ├── internals.routes.js
-│   │   │   └── publics.routes.js
-│   │   ├── services
-│   │   │   ├── axiosCancelable.js
-│   │   │   ├── createEmailTransport.js
-│   │   │   ├── sendMail.js
-│   │   │   ├── token.js
-│   │   │   ├── tokenApi.js
-│   │   │   └── tokenPassword.js
-│   │   ├── sockets
-│   │   │   ├── index.js
-│   │   │   └── websocketHandlers.js
-│   │   ├── tasks
-│   │   │   ├── crearReporteLogsSesion.js
-│   │   │   ├── crearReporteNovedades.js
-│   │   │   ├── desactivarFactorEmpaque.js
-│   │   │   ├── eliminarNotificaiconesLeidas.js
-│   │   │   ├── expirarControlPlanos.js
-│   │   │   ├── generarProductosInactivos.js
-│   │   │   ├── inactivarPedidosExpirados.js
-│   │   │   ├── index.js
-│   │   │   ├── notificacionPedidosProximosExpirar.js
-│   │   │   └── programarEnvioAutomaticoPedidos.js
-│   │   ├── utils
-│   │   │   ├── codigoSiesa.util.js
-│   │   │   ├── config.util.js
-│   │   │   ├── contexto-storage.util.js
-│   │   │   ├── entorno.util.js
-│   │   │   ├── errorPersonalizado.util.js
-│   │   │   ├── excelJsUtil.js
-│   │   │   ├── fechaLocal.util.js
-│   │   │   ├── filtros-fecha.util.js
-│   │   │   ├── formateadorNumerico.util.js
-│   │   │   ├── integration-key.util.js
-│   │   │   ├── normaliza-texto.util.js
-│   │   │   ├── numbers.util.js
-│   │   │   ├── pagination.util.js
-│   │   │   ├── public-headers.util.js
-│   │   │   ├── respuesta-header.util.js
-│   │   │   ├── ruta-permiso.util.js
-│   │   │   └── token-publico.util.js
-│   │   ├── index.js
-│   │   └── models.js
-│   ├── .babelrc
-│   ├── .dockerignore
-│   ├── .env.ceinme
-│   ├── .env.cfim
-│   ├── .env.dev
-│   ├── .eslintignore
-│   ├── .eslintrc.json
-│   ├── .gitignore
-│   ├── .prettierrc
-│   ├── Dockerfile
 │   ├── example.dev.env
 │   ├── example.production.env
 │   ├── index.html
 │   ├── nodemon.json
 │   ├── package-lock.json
 │   ├── package.json
-│   └── README.md
+│   ├── public
+│   │   └── downloads
+│   ├── README.md
+│   └── src
+│       ├── API
+│       │   └── ApiURL.js
+│       ├── config
+│       │   ├── axios.config.js
+│       │   ├── axiosConfig.js
+│       │   ├── config.js
+│       │   ├── database.js
+│       │   ├── redisClient.js
+│       │   ├── redisClientWithReconnect.js
+│       │   ├── schemas
+│       │   │   └── envs.schema.js
+│       │   ├── swaggerOptions.js
+│       │   └── websocketOptions.js
+│       ├── constants
+│       │   ├── estado-envios.js
+│       │   ├── estado-usuario.js
+│       │   ├── estado.js
+│       │   ├── estados-novedades.js
+│       │   ├── evento-mensajeria.js
+│       │   ├── eventos-log.js
+│       │   ├── grupos-validos-codigos-alternos.js
+│       │   └── tipos-planos.js
+│       ├── custom
+│       │   └── swagger
+│       │       ├── swagger-dinamico.js
+│       │       ├── swagger-public-client.js
+│       │       └── swagger-ui-options.js
+│       ├── data
+│       │   └── excelJsData.js
+│       ├── decorators
+│       │   ├── headersExcelJsDecorator.js
+│       │   └── tableExcelJsDecorator.js
+│       ├── events
+│       │   ├── eventEmitter.js
+│       │   ├── listeners.js
+│       │   ├── pedidosListeners.js
+│       │   └── pedidosNovedadesListeners.js
+│       ├── index.js
+│       ├── middlewares
+│       │   ├── auth-apikey-public.middleware.js
+│       │   ├── auth-public.middleware.js
+│       │   ├── auth.js
+│       │   ├── cacheMiddleware.js
+│       │   ├── canal.middleware.js
+│       │   ├── correlation-id.middleware.js
+│       │   ├── errorHandler.js
+│       │   ├── forgotPassword.js
+│       │   ├── idempotency.middleware.js
+│       │   ├── log-consumo-publico.middleware.js
+│       │   ├── rate-limiter.middleware.js
+│       │   ├── timestamp.middleware.js
+│       │   ├── validationErrorHandler.js
+│       │   ├── validationHandler.js
+│       │   └── validationJsonSyntaxErrorHandler.js
+│       ├── models.js
+│       ├── modules
+│       │   ├── internals
+│       │   │   ├── integrations
+│       │   │   │   ├── api-documentos
+│       │   │   │   │   ├── archivo-logs.service.js
+│       │   │   │   │   └── helpers
+│       │   │   │   │       └── archivo-logs.helper.js
+│       │   │   │   ├── api-municipios
+│       │   │   │   │   ├── api-municipios.controller.js
+│       │   │   │   │   ├── api-municipios.routes.js
+│       │   │   │   │   ├── api-municipios.service.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   └── generic-transfer
+│       │   │   │       ├── generic-transfer.controller.js
+│       │   │   │       ├── generic-transfer.routes.js
+│       │   │   │       ├── generic-transfer.service.js
+│       │   │   │       └── swagger.yaml
+│       │   │   ├── logging
+│       │   │   │   ├── control-planos
+│       │   │   │   │   ├── control-planos.controller.js
+│       │   │   │   │   ├── control-planos.routes.js
+│       │   │   │   │   ├── control-planos.service.js
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   ├── filtros-fecha.helper.js
+│       │   │   │   │   │   └── filtros.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── control-plano.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── crear-control-plano.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── logging
+│       │   │   │   │   ├── logs.controller.js
+│       │   │   │   │   ├── logs.routes.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── log.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── logging-modulos
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── filtros-por-modulo.helper.js
+│       │   │   │   │   ├── log-modulos.service.js
+│       │   │   │   │   ├── logs-modulos.controller.js
+│       │   │   │   │   ├── logs-modulos.routes.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── log-modulo.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── logs-consumo-publico
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── filtrar-buscar-todos.helper.js
+│       │   │   │   │   ├── logs-consumo-publico.controller.js
+│       │   │   │   │   ├── logs-consumo-publico.routes.js
+│       │   │   │   │   ├── logs-consumo-publico.service.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── log-consumo-publico.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   └── logs-sesion
+│       │   │   │       ├── helpers
+│       │   │   │       │   └── filtros-por-fechas.js
+│       │   │   │       ├── logs-sesion.controller.js
+│       │   │   │       ├── logs-sesion.routes.js
+│       │   │   │       ├── logs-sesion.service.js
+│       │   │   │       ├── models
+│       │   │   │       │   ├── log-sesion.model.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       ├── reports
+│       │   │   │       │   └── generar-excel-logs-sesion.js
+│       │   │   │       └── swagger.yaml
+│       │   │   ├── logistica
+│       │   │   │   ├── conductores
+│       │   │   │   │   ├── conductores.controller.js
+│       │   │   │   │   ├── conductores.routes.js
+│       │   │   │   │   ├── conductores.service.js
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── actualizar-conductor.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── conductor.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-conductor.schema.js
+│       │   │   │   │   │   ├── crear-conductor.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── envios
+│       │   │   │   │   ├── envios.controller.js
+│       │   │   │   │   ├── envios.routes.js
+│       │   │   │   │   ├── envios.service.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── envio.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-envio.schema.js
+│       │   │   │   │   │   ├── crear-envio.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── envios-sucursales
+│       │   │   │   │   ├── envios-sucursales.controller.js
+│       │   │   │   │   ├── envios-sucursales.routes.js
+│       │   │   │   │   ├── envios-sucursales.service.js
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── envio-sucursal.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── envio-sucursal.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-envios-con-sucursales.schema.js
+│       │   │   │   │   │   ├── actualizar-envios-sucursales.schema.js
+│       │   │   │   │   │   ├── crear-envios-sucursales.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── notas
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── nota.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── notas.controller.js
+│       │   │   │   │   ├── notas.routes.js
+│       │   │   │   │   ├── notas.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── crear-nota.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── transportadoras
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── actualizar-transportadora.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── swagger.yaml
+│       │   │   │   │   │   └── transportadora.model.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-transportadora.schema.js
+│       │   │   │   │   │   ├── crear-transportadora.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── swagger.yaml
+│       │   │   │   │   ├── transportadoras.controller.js
+│       │   │   │   │   ├── transportadoras.routes.js
+│       │   │   │   │   └── transportadoras.service.js
+│       │   │   │   ├── transportadoras-pedidos
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   ├── filtros.helper.js
+│       │   │   │   │   │   └── log-pedido.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── swagger.yaml
+│       │   │   │   │   │   └── transportadora-pedido.model.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-recibido-multiple.schema.js
+│       │   │   │   │   │   ├── actualizar-recibido.schema.js
+│       │   │   │   │   │   ├── actualizar-remision-factura.schema.js
+│       │   │   │   │   │   ├── actualizar-transportadora.schema.js
+│       │   │   │   │   │   ├── crear-transportadora-multiple.schema.js
+│       │   │   │   │   │   ├── crear-transportadora-pedido.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── swagger.yaml
+│       │   │   │   │   ├── transportadoras-pedidos.controller.js
+│       │   │   │   │   ├── transportadoras-pedidos.routes.js
+│       │   │   │   │   └── transportadoras-pedidos.service.js
+│       │   │   │   ├── vehiculos
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── actualizar-vehiculo.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── swagger.yaml
+│       │   │   │   │   │   └── vehiculo.model.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-vehiculo.schema.js
+│       │   │   │   │   │   ├── crear-vehiculo.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── swagger.yaml
+│       │   │   │   │   ├── vehiculos.controller.js
+│       │   │   │   │   ├── vehiculos.routes.js
+│       │   │   │   │   └── vehiculos.service.js
+│       │   │   │   └── zonas
+│       │   │   │       ├── helpers
+│       │   │   │       │   ├── actualizar-zona.helper.js
+│       │   │   │       │   └── filtros.helper.js
+│       │   │   │       ├── models
+│       │   │   │       │   ├── swagger.yaml
+│       │   │   │       │   └── zona.model.js
+│       │   │   │       ├── schemas
+│       │   │   │       │   ├── actualizar-zona.schema.js
+│       │   │   │       │   ├── crear-zona.schema.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       ├── swagger.yaml
+│       │   │   │       ├── zonas.controller.js
+│       │   │   │       ├── zonas.routes.js
+│       │   │   │       └── zonas.service.js
+│       │   │   ├── parametrizacion
+│       │   │   │   ├── bodegas-tipos-inventario
+│       │   │   │   │   ├── bodegas-tipos-Inventario.controller.js
+│       │   │   │   │   ├── bodegas-tipos-inventario.routes.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── bodega-tipo-inventario.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-bodegas-tipos-Inventario.schema.js
+│       │   │   │   │   │   ├── crear-bodegas-tipos-Inventario.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── parametrizacion-criterios
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── parametrizacion-criterio.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── parametrizacion-criterios.controller.js
+│       │   │   │   │   ├── parametrizacion-criterios.routes.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-parametrizacion-criterio.schema.js
+│       │   │   │   │   │   ├── crear-parametrizacion-criterio.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── parametrizacion-empresas
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── email-configuracion.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── centro-operacion.model.js
+│       │   │   │   │   │   ├── parametrizacion-empresa.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── parametrizacion-empresas.controller.js
+│       │   │   │   │   ├── parametrizacion-empresas.routes.js
+│       │   │   │   │   ├── parametrizacion-empresas.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   └── actualiza-centro-operacion.schema.js
+│       │   │   │   │   ├── services
+│       │   │   │   │   │   └── centros-operaciones.service.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── parametrizacion-grupos-codigos-alternos
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── filtros.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.controller.js
+│       │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.routes.js
+│       │   │   │   │   ├── parametrizacion-grupos-codigos-alternos.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-grupo-codigo-alterno.schema.js
+│       │   │   │   │   │   ├── crear-grupo-codigo-alterno.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── parametrizacion-pedidos
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── parametrizacion-pedido.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── parametrizacion-pedidos.controller.js
+│       │   │   │   │   ├── parametrizacion-pedidos.routes.js
+│       │   │   │   │   ├── parametrizacion-pedidos.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-consecutivo-siesa.schema.js
+│       │   │   │   │   │   ├── actualizar-parametrizacion-pedido.schema.js
+│       │   │   │   │   │   ├── crear-parametrizacion-pedido.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── parametrizacion-sucursales
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── parametrizacion-sucursal.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── parametrizacion-sucursales.controller.js
+│       │   │   │   │   ├── parametrizacion-sucursales.routes.js
+│       │   │   │   │   ├── parametrizacion-sucursales.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-sucursal.schema.js
+│       │   │   │   │   │   ├── crear-sucursal.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   └── parametros-control
+│       │   │   │       ├── models
+│       │   │   │       │   ├── parametros-control.model.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       ├── parametros-control.controller.js
+│       │   │   │       ├── parametros-control.routes.js
+│       │   │   │       └── swagger.yaml
+│       │   │   ├── pedidos
+│       │   │   │   ├── notificaciones
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── filtros.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── notificacion.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── notificaciones.controller.js
+│       │   │   │   │   ├── notificaciones.routes.js
+│       │   │   │   │   ├── notificaciones.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── crear-notificacion.schema.js
+│       │   │   │   │   │   ├── marcar-leidas.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── services
+│       │   │   │   │   │   └── notificaciones-novedades.service.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── novedades
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   ├── aprobar-pedido-novedad.helper.js
+│       │   │   │   │   │   └── interfazar-pedidos-novedades.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── novedad.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── novedades.controller.js
+│       │   │   │   │   ├── novedades.routes.js
+│       │   │   │   │   ├── novedades.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── crear-novedad.schema.js
+│       │   │   │   │   │   ├── finalizar-novedad.schema.js
+│       │   │   │   │   │   ├── rechazar-productos-novedad.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── services
+│       │   │   │   │   │   └── finalizar-novedad.service.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── ordenes-compra
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   ├── crear-orden-compra.helper.js
+│       │   │   │   │   │   └── filtros-buscar-todos.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── ordenes-compra.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── ordenes-compra.controller.js
+│       │   │   │   │   ├── ordenes-compra.routes.js
+│       │   │   │   │   ├── ordenes-compra.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── crear-ordenes-compra.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── pedidos
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   ├── actualizar-pedido.helper.js
+│       │   │   │   │   │   ├── aprobar-pedido.helper.js
+│       │   │   │   │   │   ├── cambio-estado.helper.js
+│       │   │   │   │   │   ├── crear-detalle-log-actualizar-pedido.helper.js
+│       │   │   │   │   │   ├── crear-pedido.helper.js
+│       │   │   │   │   │   ├── crear-pedidos-clinicas
+│       │   │   │   │   │   │   ├── construir-orden-compra.helper.js
+│       │   │   │   │   │   │   ├── preparar-pedido-generic.helper.js
+│       │   │   │   │   │   │   ├── preparar-pedido-mongo.helper.js
+│       │   │   │   │   │   │   ├── validar-codigos-alternos-productos.helper.js
+│       │   │   │   │   │   │   ├── validar-factor-empaque.helper.js
+│       │   │   │   │   │   │   ├── validar-productos.helper.js
+│       │   │   │   │   │   │   └── validar-sucursales-clinicas.helper.js
+│       │   │   │   │   │   ├── filtros-pedido-con-detalle.helper.js
+│       │   │   │   │   │   ├── filtros-por-estado.helper.js
+│       │   │   │   │   │   ├── filtros-por-usuario.helper.js
+│       │   │   │   │   │   ├── filtros-productos-cantidades.helper.js
+│       │   │   │   │   │   ├── filtros.helper.js
+│       │   │   │   │   │   ├── interfazar-pedidos.helper.js
+│       │   │   │   │   │   └── pedidos-activos.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── pedido.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── pedidos.controller.js
+│       │   │   │   │   ├── pedidos.routes.js
+│       │   │   │   │   ├── pedidos.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-estado-pedido.schema.js
+│       │   │   │   │   │   ├── actualizar-pedido-desabastecidos.schema.js
+│       │   │   │   │   │   ├── actualizar-pedido-proveedor.schema.js
+│       │   │   │   │   │   ├── actualizar-pedido.schema.js
+│       │   │   │   │   │   ├── actualizar-producto-pedido.schema.js
+│       │   │   │   │   │   ├── actualizar-validadores-pedido.schema.js
+│       │   │   │   │   │   ├── aprobar-pedido.schema.js
+│       │   │   │   │   │   ├── consulta-pedidos.schema.js
+│       │   │   │   │   │   ├── crear-pedido.schema.js
+│       │   │   │   │   │   ├── index.js
+│       │   │   │   │   │   ├── preaprobar-pedido.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── services
+│       │   │   │   │   │   ├── buscar-productos-cantidades.service.js
+│       │   │   │   │   │   ├── crear-pedido-clinicas.service.js
+│       │   │   │   │   │   ├── crear-pedido.service.js
+│       │   │   │   │   │   └── notificaciones-pedidos.service.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── pedidos-devoluciones
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── pedido-devolucion.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── pedidos-devoluciones.controller.js
+│       │   │   │   │   ├── pedidos-devoluciones.routes.js
+│       │   │   │   │   ├── pedidos-devoluciones.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── crear-pedido-devolucion.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── pedidos-reordenados
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── pedido-reordenado.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── pedidos-reordenados.controller.js
+│       │   │   │   │   ├── pedidos-reordenados.routes.js
+│       │   │   │   │   ├── pedidos-reordenados.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-pedido-reordenado.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── periodos-sucursales
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   ├── detalle-periodos-sucursales.helper.js
+│       │   │   │   │   │   ├── periodo-todas-sucursales.schema.js
+│       │   │   │   │   │   └── periodos.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── periodo-sucursal.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── periodos-sucursales.controller.js
+│       │   │   │   │   ├── periodos-sucursales.routes.js
+│       │   │   │   │   ├── periodos-sucursales.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-estado-compania.schema.js
+│       │   │   │   │   │   ├── actualizar-estado-sucursal.schema.js
+│       │   │   │   │   │   ├── agregar-periodo-sucursal.schema.js
+│       │   │   │   │   │   ├── agregar-periodo-todas-sucursales.schema.js
+│       │   │   │   │   │   ├── agregar-sucursal.schema.js
+│       │   │   │   │   │   ├── crear-compania.schema.js
+│       │   │   │   │   │   ├── deshabilitar-periodo-todas-sucursales.schema.js
+│       │   │   │   │   │   ├── editar-periodo-sucursal.schema.js
+│       │   │   │   │   │   ├── eliminar-sucursal.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   └── tipos-inventarios
+│       │   │   │       ├── models
+│       │   │   │       │   ├── swagger.yaml
+│       │   │   │       │   └── tipos-inventarios.model.js
+│       │   │   │       ├── schemas
+│       │   │   │       │   ├── actualizar-tipo-inventario.schema.js
+│       │   │   │       │   ├── crear-tipo-inventario.schema.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       ├── swagger.yaml
+│       │   │   │       ├── tipos-inventarios.controller.js
+│       │   │   │       ├── tipos-inventarios.routes.js
+│       │   │   │       └── tipos-inventarios.service.js
+│       │   │   ├── productos
+│       │   │   │   ├── codigos-alternos
+│       │   │   │   │   ├── codigos-alternos.controller.js
+│       │   │   │   │   ├── codigos-alternos.routes.js
+│       │   │   │   │   ├── codigos-alternos.service.js
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   ├── actualizar-codigo-alterno.helper.js
+│       │   │   │   │   │   ├── actualizar-masivo-codigos-alternos.helper.js
+│       │   │   │   │   │   ├── actualizar-masivo-validaciones.helper.js
+│       │   │   │   │   │   ├── construir-control-cambios.helper.js
+│       │   │   │   │   │   ├── crear-masivo-validaciones.helper.js
+│       │   │   │   │   │   ├── filtros.helper.js
+│       │   │   │   │   │   ├── grupos-codigos-alternos.helper.js
+│       │   │   │   │   │   └── reporte-homologos-inactivos
+│       │   │   │   │   │       └── obtener-lista-precios.helper.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── codigo-alterno.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── reports
+│       │   │   │   │   │   ├── generarExcelHomologaciones.js
+│       │   │   │   │   │   └── generarExcelHomologosInactivos.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-codigo-alterno.schema.js
+│       │   │   │   │   │   ├── actualizar-producto-homologo.schema.js
+│       │   │   │   │   │   ├── confirmar-producto-homologo.schema.js
+│       │   │   │   │   │   ├── crear-codigo-alterno-schema.js
+│       │   │   │   │   │   ├── crear-masivo-codigo-alterno.schema.js
+│       │   │   │   │   │   ├── generar-productos-inactivos.schema.js
+│       │   │   │   │   │   ├── previsualizar-producto-homologo.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── services
+│       │   │   │   │   │   ├── buscar-productos-homologos-clinicas.service.js
+│       │   │   │   │   │   ├── buscar-sucursales-clinicas.service.js
+│       │   │   │   │   │   └── generar-homologos-inactivos-clinicas.service.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── factores-empaque
+│       │   │   │   │   ├── factores-empaque.controller.js
+│       │   │   │   │   ├── factores-empaque.routes.js
+│       │   │   │   │   ├── factores-empaque.service.js
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── factor-empaque.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-factor-empaque.schema.js
+│       │   │   │   │   │   ├── crear-factor-empaque.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── portafolios
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── portafolio.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── portafolios.controller.js
+│       │   │   │   │   ├── portafolios.routes.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-portafolio.schema.js
+│       │   │   │   │   │   ├── crear-portafolio.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── portafolios-sucursales
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── portafolio-sucursal.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── portafolios-sucursales.controller.js
+│       │   │   │   │   ├── portafolios-sucursales.routes.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── crear-portafolio-sucursales.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── productos
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── producto.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── productos.controller.js
+│       │   │   │   │   ├── productos.routes.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   ├── productos-desabastecidos
+│       │   │   │   │   ├── models
+│       │   │   │   │   │   ├── producto-desabastecido.model.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   ├── productos-desabastecidos.controller.js
+│       │   │   │   │   ├── productos-desabastecidos.routes.js
+│       │   │   │   │   ├── productos-desabastecidos.service.js
+│       │   │   │   │   ├── schemas
+│       │   │   │   │   │   ├── actualizar-producto-desabastecido.schema.js
+│       │   │   │   │   │   ├── cambiar-estado-producto-desabastecido.schema.js
+│       │   │   │   │   │   ├── crear-producto-desabastecido.schema.js
+│       │   │   │   │   │   └── swagger.yaml
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   └── productos-proveedores
+│       │   │   │       ├── helpers
+│       │   │   │       │   └── construir-detalle-log.helper.js
+│       │   │   │       ├── models
+│       │   │   │       │   ├── producto-proveedor.model.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       ├── productos-proveedores.controller.js
+│       │   │   │       ├── productos-proveedores.routes.js
+│       │   │   │       ├── productos-proveedores.service.js
+│       │   │   │       ├── schemas
+│       │   │   │       │   ├── actualizar-producto-proveedor.schema.js
+│       │   │   │       │   ├── crear-producto-proveedor.schema.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       └── swagger.yaml
+│       │   │   ├── refresh-token
+│       │   │   │   ├── refresh-token.controller.js
+│       │   │   │   ├── refresh-token.routes.js
+│       │   │   │   ├── refresh-token.service.js
+│       │   │   │   └── swagger.yaml
+│       │   │   ├── terceros
+│       │   │   │   └── proveedores
+│       │   │   │       ├── models
+│       │   │   │       │   ├── proveedor.model.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       ├── proveedores.controller.js
+│       │   │   │       ├── proveedores.routes.js
+│       │   │   │       ├── proveedores.service.js
+│       │   │   │       ├── schemas
+│       │   │   │       │   ├── actualizar-proveedor.schema.js
+│       │   │   │       │   ├── crear-proveedor.schema.js
+│       │   │   │       │   └── swagger.yaml
+│       │   │   │       └── swagger.yaml
+│       │   │   └── usuarios
+│       │   │       ├── roles
+│       │   │       │   ├── helpers
+│       │   │       │   │   ├── actualizar-rol.helper.js
+│       │   │       │   │   └── crear-rol.helper.js
+│       │   │       │   ├── models
+│       │   │       │   │   ├── roles.model.js
+│       │   │       │   │   └── swagger.yaml
+│       │   │       │   ├── roles.controller.js
+│       │   │       │   ├── roles.routes.js
+│       │   │       │   ├── roles.service.js
+│       │   │       │   ├── schemas
+│       │   │       │   │   ├── actualizar-rol.schema.js
+│       │   │       │   │   ├── crear-rol.schema.js
+│       │   │       │   │   └── swagger.yaml
+│       │   │       │   └── swagger.yaml
+│       │   │       ├── roles-api
+│       │   │       │   ├── models
+│       │   │       │   │   ├── rol-api.model.js
+│       │   │       │   │   └── swagger.yaml
+│       │   │       │   ├── roles-api.controller.js
+│       │   │       │   ├── roles-api.routes.js
+│       │   │       │   ├── roles-api.service.js
+│       │   │       │   ├── schemas
+│       │   │       │   │   ├── actualizar-rol-api.schema.js
+│       │   │       │   │   ├── crear-rol-api.schema.js
+│       │   │       │   │   └── swagger.yaml
+│       │   │       │   └── swagger.yaml
+│       │   │       ├── usuarios
+│       │   │       │   ├── helpers
+│       │   │       │   │   ├── actualizar-usuario.helper.js
+│       │   │       │   │   ├── crear-usuario.helper.js
+│       │   │       │   │   ├── eliminar-usuario.helper.js
+│       │   │       │   │   ├── login.helper.js
+│       │   │       │   │   └── validar-perfil.helper.js
+│       │   │       │   ├── models
+│       │   │       │   │   ├── swagger.yaml
+│       │   │       │   │   └── usuario.model.js
+│       │   │       │   ├── schemas
+│       │   │       │   │   ├── activar-inactivar-usuario.schema.js
+│       │   │       │   │   ├── actualizar-contrasena-usuario.schema.js
+│       │   │       │   │   ├── actualizar-perfil-usuario.schema.js
+│       │   │       │   │   ├── actualizar-usuario.schema.js
+│       │   │       │   │   ├── crear-usuario.schema.js
+│       │   │       │   │   ├── eliminar-usuario.schema.js
+│       │   │       │   │   ├── iniciar-sesion.schema.js
+│       │   │       │   │   ├── olvidar-contrasena.schema.js
+│       │   │       │   │   └── swagger.yaml
+│       │   │       │   ├── swagger.yaml
+│       │   │       │   ├── usuarios.controller.js
+│       │   │       │   ├── usuarios.routes.js
+│       │   │       │   └── usuarios.service.js
+│       │   │       └── usuarios-api
+│       │   │           ├── helpers
+│       │   │           │   ├── actualizar-usuario-api.helper.js
+│       │   │           │   └── crear-usuario-api.helper.js
+│       │   │           ├── models
+│       │   │           │   ├── swagger.yaml
+│       │   │           │   └── usuario-api.model.js
+│       │   │           ├── schema
+│       │   │           │   ├── actualizar-usuario-api.schema.js
+│       │   │           │   ├── crear-usuario-api.schema.js
+│       │   │           │   └── swagger.yaml
+│       │   │           ├── swagger.yaml
+│       │   │           ├── usuarios-api.controller.js
+│       │   │           ├── usuarios-api.routes.js
+│       │   │           └── usuarios-api.service.js
+│       │   ├── provedores
+│       │   │   └── api-data-erp
+│       │   │       └── api-data-municipios.service.js
+│       │   ├── proveedores
+│       │   │   └── connekta
+│       │   │       ├── connekta.controller.js
+│       │   │       ├── connekta.routes.js
+│       │   │       ├── connekta.service.js
+│       │   │       ├── helpers
+│       │   │       │   ├── contruir-url-connekta.helper.js
+│       │   │       │   └── filtros-connekta.helper.js
+│       │   │       ├── schema
+│       │   │       │   └── connekta.schema.js
+│       │   │       └── swagger.yaml
+│       │   └── publics
+│       │       ├── auth
+│       │       │   ├── auth.controller.js
+│       │       │   ├── auth.routes.js
+│       │       │   ├── auth.service.js
+│       │       │   ├── schemes
+│       │       │   │   ├── iniciar-sesion.schema.js
+│       │       │   │   └── swagger.yaml
+│       │       │   └── swagger.yaml
+│       │       ├── connekta
+│       │       │   ├── connekta.controller.js
+│       │       │   ├── connekta.routes.js
+│       │       │   ├── connekta.service.js
+│       │       │   ├── schema
+│       │       │   │   └── connekta.schema.js
+│       │       │   └── swagger.yaml
+│       │       ├── pedidos
+│       │       │   ├── pedidos.controller.js
+│       │       │   ├── pedidos.routes.js
+│       │       │   ├── pedidos.service.js
+│       │       │   ├── schemes
+│       │       │   │   ├── crear-pedido-clinica.schema.js
+│       │       │   │   └── swagger.yaml
+│       │       │   └── swagger.yaml
+│       │       └── productos-homologos
+│       │           ├── productos-homologos.controller.js
+│       │           ├── productos-homologos.routes.js
+│       │           ├── productos-homologos.service.js
+│       │           ├── schemes
+│       │           │   └── swagger.yaml
+│       │           └── swagger.yaml
+│       ├── queues
+│       │   ├── connection.js
+│       │   ├── index.js
+│       │   └── pedidos.queue.js
+│       ├── routes
+│       │   ├── index.js
+│       │   ├── internals.routes.js
+│       │   └── publics.routes.js
+│       ├── services
+│       │   ├── axiosCancelable.js
+│       │   ├── createEmailTransport.js
+│       │   ├── sendMail.js
+│       │   ├── token.js
+│       │   ├── tokenApi.js
+│       │   └── tokenPassword.js
+│       ├── sockets
+│       │   ├── index.js
+│       │   └── websocketHandlers.js
+│       ├── tasks
+│       │   ├── crearReporteLogsSesion.js
+│       │   ├── crearReporteNovedades.js
+│       │   ├── desactivarFactorEmpaque.js
+│       │   ├── eliminarNotificaiconesLeidas.js
+│       │   ├── expirarControlPlanos.js
+│       │   ├── generarProductosInactivos.js
+│       │   ├── inactivarPedidosExpirados.js
+│       │   ├── index.js
+│       │   ├── notificacionPedidosProximosExpirar.js
+│       │   └── programarEnvioAutomaticoPedidos.js
+│       └── utils
+│           ├── codigoSiesa.util.js
+│           ├── config.util.js
+│           ├── contexto-storage.util.js
+│           ├── entorno.util.js
+│           ├── errorPersonalizado.util.js
+│           ├── excelJsUtil.js
+│           ├── fechaLocal.util.js
+│           ├── filtros-fecha.util.js
+│           ├── formateadorNumerico.util.js
+│           ├── integration-key.util.js
+│           ├── normaliza-texto.util.js
+│           ├── numbers.util.js
+│           ├── pagination.util.js
+│           ├── public-headers.util.js
+│           ├── respuesta-header.util.js
+│           ├── ruta-permiso.util.js
+│           └── token-publico.util.js
+├── bitbucket-pipelines.yml
+├── docker-compose.yml
 ├── Front
+│   ├── .dockerignore
+│   ├── .env
+│   ├── .env.ceinme
+│   ├── .env.cfim
+│   ├── .eslintignore
+│   ├── .eslintrc.json
+│   ├── .gitignore
 │   ├── .husky
-│   │   ├── _
-│   │   │   ├── .gitignore
-│   │   │   └── husky.sh
-│   │   └── pre-commit
+│   │   ├── pre-commit
+│   │   └── _
+│   │       ├── .gitignore
+│   │       └── husky.sh
+│   ├── .lintstagedrc
+│   ├── .prettierrc
+│   ├── babel.config.js
+│   ├── Dockerfile
+│   ├── example.env
+│   ├── example.production.env
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
 │   ├── public
 │   │   ├── ceimen.ico
 │   │   ├── favicon.ico
 │   │   ├── IconoWarning.png
 │   │   └── LogoPedidoEnLinea.png
+│   ├── README.md
 │   ├── src
 │   │   ├── API
-│   │   │   ├── Services
-│   │   │   │   ├── ServiceNode
-│   │   │   │   │   ├── ApiMunicipiosService.js
-│   │   │   │   │   ├── CodigoAlternoService.js
-│   │   │   │   │   ├── ConductorService.js
-│   │   │   │   │   ├── ControlPanoService.js
-│   │   │   │   │   ├── EnviosService.js
-│   │   │   │   │   ├── FactorEmpaqueService.js
-│   │   │   │   │   ├── genericService.js
-│   │   │   │   │   ├── LogisticaNota.js
-│   │   │   │   │   ├── LogModuloService.js
-│   │   │   │   │   ├── LogSesionServices.js
-│   │   │   │   │   ├── NotificacionService.js
-│   │   │   │   │   ├── OrdenCompraService.js
-│   │   │   │   │   ├── ParametrizacionBodegaInventarioService.js
-│   │   │   │   │   ├── ParametrizacionCriteriosService.js
-│   │   │   │   │   ├── ParametrizacionEmpresasService.js
-│   │   │   │   │   ├── ParametrizacionGruposCodigosAlternosService.js
-│   │   │   │   │   ├── ParametrizacionPedidosService.js
-│   │   │   │   │   ├── ParametrizacionProductoProveedorService.js
-│   │   │   │   │   ├── ParametrizacionSucursales.js
-│   │   │   │   │   ├── ParametrizacionTiposInventariosService.js
-│   │   │   │   │   ├── ParametrizacionVehiculosService.js
-│   │   │   │   │   ├── ParametrizacionZonasService.js
-│   │   │   │   │   ├── Pedido.js
-│   │   │   │   │   ├── PedidoDevolucionService.js
-│   │   │   │   │   ├── PedidoNovedad.js
-│   │   │   │   │   ├── PedidoReordenadoService.js
-│   │   │   │   │   ├── PeriodoSucursalService.js
-│   │   │   │   │   ├── PortafolioService.js
-│   │   │   │   │   ├── PortafolioSucursalService.js
-│   │   │   │   │   ├── ProductoDesabastecidoService.js
-│   │   │   │   │   ├── ProveedorService.js
-│   │   │   │   │   ├── RefreshTokenService.js
-│   │   │   │   │   ├── RolesApiService.js
-│   │   │   │   │   ├── RolService.js
-│   │   │   │   │   ├── TransportadoraPedidosService.js
-│   │   │   │   │   ├── TransportadoraService.js
-│   │   │   │   │   ├── UsuarioApiService.js
-│   │   │   │   │   └── UsuarioService.js
-│   │   │   │   ├── AxiosCancelable.js
-│   │   │   │   ├── AxiosConRefreshToken.js
-│   │   │   │   ├── IndexedDbService.js
-│   │   │   │   ├── ServiceComun.js
-│   │   │   │   ├── ServiceDocuments.js
-│   │   │   │   ├── ServiceEncabezado.js
-│   │   │   │   ├── ServiceGeneric.js
-│   │   │   │   ├── ServiceNode.js
-│   │   │   │   └── ServicePedido.js
-│   │   │   └── ApiURL.js
+│   │   │   ├── ApiURL.js
+│   │   │   └── Services
+│   │   │       ├── AxiosCancelable.js
+│   │   │       ├── AxiosConRefreshToken.js
+│   │   │       ├── IndexedDbService.js
+│   │   │       ├── ServiceComun.js
+│   │   │       ├── ServiceDocuments.js
+│   │   │       ├── ServiceEncabezado.js
+│   │   │       ├── ServiceGeneric.js
+│   │   │       ├── ServiceNode
+│   │   │       │   ├── ApiMunicipiosService.js
+│   │   │       │   ├── CodigoAlternoService.js
+│   │   │       │   ├── ConductorService.js
+│   │   │       │   ├── ControlPanoService.js
+│   │   │       │   ├── EnviosService.js
+│   │   │       │   ├── FactorEmpaqueService.js
+│   │   │       │   ├── genericService.js
+│   │   │       │   ├── LogisticaNota.js
+│   │   │       │   ├── LogModuloService.js
+│   │   │       │   ├── LogSesionServices.js
+│   │   │       │   ├── NotificacionService.js
+│   │   │       │   ├── OrdenCompraService.js
+│   │   │       │   ├── ParametrizacionBodegaInventarioService.js
+│   │   │       │   ├── ParametrizacionCriteriosService.js
+│   │   │       │   ├── ParametrizacionEmpresasService.js
+│   │   │       │   ├── ParametrizacionGruposCodigosAlternosService.js
+│   │   │       │   ├── ParametrizacionPedidosService.js
+│   │   │       │   ├── ParametrizacionProductoProveedorService.js
+│   │   │       │   ├── ParametrizacionSucursales.js
+│   │   │       │   ├── ParametrizacionTiposInventariosService.js
+│   │   │       │   ├── ParametrizacionVehiculosService.js
+│   │   │       │   ├── ParametrizacionZonasService.js
+│   │   │       │   ├── Pedido.js
+│   │   │       │   ├── PedidoDevolucionService.js
+│   │   │       │   ├── PedidoNovedad.js
+│   │   │       │   ├── PedidoReordenadoService.js
+│   │   │       │   ├── PeriodoSucursalService.js
+│   │   │       │   ├── PortafolioService.js
+│   │   │       │   ├── PortafolioSucursalService.js
+│   │   │       │   ├── ProductoDesabastecidoService.js
+│   │   │       │   ├── ProveedorService.js
+│   │   │       │   ├── RefreshTokenService.js
+│   │   │       │   ├── RolesApiService.js
+│   │   │       │   ├── RolService.js
+│   │   │       │   ├── TransportadoraPedidosService.js
+│   │   │       │   ├── TransportadoraService.js
+│   │   │       │   ├── UsuarioApiService.js
+│   │   │       │   └── UsuarioService.js
+│   │   │       ├── ServiceNode.js
+│   │   │       └── ServicePedido.js
+│   │   ├── App.vue
 │   │   ├── assets
 │   │   │   ├── iconsPdf
 │   │   │   │   └── InformacionPdfPortafolio.png
@@ -899,9 +925,11 @@
 │   │   │   ├── Alert
 │   │   │   │   ├── AlertErroresProductos.vue
 │   │   │   │   └── SinPermiso.vue
+│   │   │   ├── Avatar.vue
 │   │   │   ├── Common
 │   │   │   │   ├── ArbolPermisos.vue
 │   │   │   │   └── ItemVistaArbol.vue
+│   │   │   ├── Footer.vue
 │   │   │   ├── Form
 │   │   │   │   ├── FiltrarPorSucursal.vue
 │   │   │   │   ├── ListarPorDosCampos.vue
@@ -937,12 +965,10 @@
 │   │   │   │   ├── CustomIcon.vue
 │   │   │   │   ├── ImprimirErrores.vue
 │   │   │   │   └── ResumenPedido.vue
-│   │   │   ├── Table
-│   │   │   │   └── DataTablePagination.vue
-│   │   │   ├── Avatar.vue
-│   │   │   ├── Footer.vue
 │   │   │   ├── SendEmail.vue
 │   │   │   ├── Sidebar.vue
+│   │   │   ├── Table
+│   │   │   │   └── DataTablePagination.vue
 │   │   │   ├── TituloSubModulo.vue
 │   │   │   ├── TituloTabla.vue
 │   │   │   └── ViewPdf.vue
@@ -953,6 +979,7 @@
 │   │   │   │   │   │   ├── useBodegaInventarioPermisos.js
 │   │   │   │   │   │   ├── useCompaniaPermisos.js
 │   │   │   │   │   │   ├── useGeneralesPermiso.js
+│   │   │   │   │   │   ├── useGruposCodigosAlternosPermisos.js
 │   │   │   │   │   │   ├── useProveedorPermisos.js
 │   │   │   │   │   │   ├── useSucursalesPermisos.js
 │   │   │   │   │   │   └── useTiposInventariosPermisos.js
@@ -971,6 +998,7 @@
 │   │   │   │   │   └── useZonasPermisos.js
 │   │   │   │   ├── consultas
 │   │   │   │   │   ├── useConsultaCantidadesPermisos.js
+│   │   │   │   │   ├── useConsultaPedidoCancelado.js
 │   │   │   │   │   ├── useConsultaPedidosPermisos.js
 │   │   │   │   │   ├── useConsultaProductosPermisos.js
 │   │   │   │   │   └── useDocumentosPendientesPermisos.js
@@ -1008,7 +1036,6 @@
 │   │   ├── ConfigError
 │   │   │   └── ConfigError.js
 │   │   ├── constants
-│   │   │   ├── codigosAlternos.js
 │   │   │   ├── enviosPedidos.js
 │   │   │   ├── eventosMensajes.js
 │   │   │   ├── novedad.js
@@ -1025,70 +1052,71 @@
 │   │   ├── guards
 │   │   │   ├── loginGuard.js
 │   │   │   └── permisoGuard.js
+│   │   ├── main.js
 │   │   ├── mixins
-│   │   │   ├── permisos
-│   │   │   │   ├── configurar
-│   │   │   │   │   ├── bodegaInventarioMixin.js
-│   │   │   │   │   ├── companiaMixin.js
-│   │   │   │   │   ├── criteriosMixin.js
-│   │   │   │   │   ├── desabastesidosMixin.js
-│   │   │   │   │   ├── factorEmpaqueMixin.js
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── novedadesMixin.js
-│   │   │   │   │   ├── pedidoMixin.js
-│   │   │   │   │   ├── periodosMixin.js
-│   │   │   │   │   ├── productoProveedorMixin.js
-│   │   │   │   │   ├── sucursalesMixin.js
-│   │   │   │   │   ├── tiposInventariosMixin.js
-│   │   │   │   │   └── transportadoraMixin.js
-│   │   │   │   ├── consultas
-│   │   │   │   │   ├── consultaCantidadesMixin.js
-│   │   │   │   │   ├── consultaOrdenesCompraMixin.js
-│   │   │   │   │   ├── consultaPedidoCanceladoMixin.js
-│   │   │   │   │   ├── consultaPedidosMixin.js
-│   │   │   │   │   ├── consultaProductosMixin.js
-│   │   │   │   │   ├── documentosPendientesMixin.js
-│   │   │   │   │   ├── estadosPedidosMixin.js
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   └── pedidosPendientesMixin.js
-│   │   │   │   ├── gestionIndicadores
-│   │   │   │   │   ├── gestionIndicadoresMixin.js
-│   │   │   │   │   └── index.js
-│   │   │   │   ├── logistica
-│   │   │   │   │   ├── documentoEntregaMixin.js
-│   │   │   │   │   ├── enviosMixin.js
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   └── reporteNovedadesMixin.js
-│   │   │   │   ├── logs
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── logsMixin.js
-│   │   │   │   │   └── modulosMixin.js
-│   │   │   │   ├── pedidos
-│   │   │   │   │   ├── detallesFacturasMixin.js
-│   │   │   │   │   ├── gestionMixin.js
-│   │   │   │   │   ├── historialMixin.js
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── novedadesMixin.js
-│   │   │   │   │   ├── ordenCompraMixin.js
-│   │   │   │   │   ├── pedidoExcelMixin.js
-│   │   │   │   │   ├── pedidoMixin.js
-│   │   │   │   │   ├── pedidosPendientesMixin.js
-│   │   │   │   │   └── seguimientoMixin.js
-│   │   │   │   ├── portafolio
-│   │   │   │   │   ├── asignarPortafolioSucursalMixin.js
-│   │   │   │   │   ├── descargarPortafolioMixin.js
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   ├── nuevoPortafolioMixin.js
-│   │   │   │   │   └── subirExcelPortafolioMixin.js
-│   │   │   │   ├── terceros
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   └── proveedorMixin.js
-│   │   │   │   ├── user
-│   │   │   │   │   ├── index.js
-│   │   │   │   │   └── perfilMixin.js
-│   │   │   │   └── index.js
 │   │   │   ├── listaSucursalesMixin.js
-│   │   │   └── parametrizacionSucursalesMixin.js
+│   │   │   ├── parametrizacionSucursalesMixin.js
+│   │   │   └── permisos
+│   │   │       ├── configurar
+│   │   │       │   ├── bodegaInventarioMixin.js
+│   │   │       │   ├── companiaMixin.js
+│   │   │       │   ├── criteriosMixin.js
+│   │   │       │   ├── desabastesidosMixin.js
+│   │   │       │   ├── factorEmpaqueMixin.js
+│   │   │       │   ├── index.js
+│   │   │       │   ├── novedadesMixin.js
+│   │   │       │   ├── pedidoMixin.js
+│   │   │       │   ├── periodosMixin.js
+│   │   │       │   ├── productoProveedorMixin.js
+│   │   │       │   ├── sucursalesMixin.js
+│   │   │       │   ├── tiposInventariosMixin.js
+│   │   │       │   └── transportadoraMixin.js
+│   │   │       ├── consultas
+│   │   │       │   ├── consultaCantidadesMixin.js
+│   │   │       │   ├── consultaOrdenesCompraMixin.js
+│   │   │       │   ├── consultaPedidoCanceladoMixin.js
+│   │   │       │   ├── consultaPedidosMixin.js
+│   │   │       │   ├── consultaProductosMixin.js
+│   │   │       │   ├── documentosPendientesMixin.js
+│   │   │       │   ├── estadosPedidosMixin.js
+│   │   │       │   ├── index.js
+│   │   │       │   └── pedidosPendientesMixin.js
+│   │   │       ├── gestionIndicadores
+│   │   │       │   ├── gestionIndicadoresMixin.js
+│   │   │       │   └── index.js
+│   │   │       ├── index.js
+│   │   │       ├── logistica
+│   │   │       │   ├── documentoEntregaMixin.js
+│   │   │       │   ├── enviosMixin.js
+│   │   │       │   ├── index.js
+│   │   │       │   └── reporteNovedadesMixin.js
+│   │   │       ├── logs
+│   │   │       │   ├── index.js
+│   │   │       │   ├── logsMixin.js
+│   │   │       │   └── modulosMixin.js
+│   │   │       ├── pedidos
+│   │   │       │   ├── detallesFacturasMixin.js
+│   │   │       │   ├── gestionMixin.js
+│   │   │       │   ├── historialMixin.js
+│   │   │       │   ├── index.js
+│   │   │       │   ├── novedadesMixin.js
+│   │   │       │   ├── ordenCompraMixin.js
+│   │   │       │   ├── pedidoExcelMixin.js
+│   │   │       │   ├── pedidoMixin.js
+│   │   │       │   ├── pedidosPendientesMixin.js
+│   │   │       │   └── seguimientoMixin.js
+│   │   │       ├── portafolio
+│   │   │       │   ├── asignarPortafolioSucursalMixin.js
+│   │   │       │   ├── descargarPortafolioMixin.js
+│   │   │       │   ├── index.js
+│   │   │       │   ├── nuevoPortafolioMixin.js
+│   │   │       │   └── subirExcelPortafolioMixin.js
+│   │   │       ├── terceros
+│   │   │       │   ├── index.js
+│   │   │       │   └── proveedorMixin.js
+│   │   │       └── user
+│   │   │           ├── index.js
+│   │   │           └── perfilMixin.js
 │   │   ├── model
 │   │   │   └── ModelRol.js
 │   │   ├── plugins
@@ -1111,7 +1139,6 @@
 │   │   │   ├── alertResponseHttpUtil.js
 │   │   │   ├── alertToastUtil.js
 │   │   │   ├── alertUtil.js
-│   │   │   ├── codigosUtil.js
 │   │   │   ├── dateFormatterUtil.js
 │   │   │   ├── excelJsUtil.js
 │   │   │   ├── formateadorNumericoUtil.js
@@ -1131,688 +1158,673 @@
 │   │   │   ├── validacionesProductoPedidoUtil.js
 │   │   │   ├── validarCantidadCeroUtil.js
 │   │   │   └── validationsUtil.js
-│   │   ├── views
-│   │   │   ├── Configurar
-│   │   │   │   ├── Generales
-│   │   │   │   │   ├── BodegaTipoInventario
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── AsociarBodega.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   └── Bodegas.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── CentrosOperacion
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── CrearCentroOperacion.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── Compania
-│   │   │   │   │   │   ├── Acordeon
-│   │   │   │   │   │   │   ├── AcordeonSubmodulo.vue
-│   │   │   │   │   │   │   ├── General.vue
-│   │   │   │   │   │   │   ├── Imagen.vue
-│   │   │   │   │   │   │   ├── Mensajeria.vue
-│   │   │   │   │   │   │   └── Servicios.vue
-│   │   │   │   │   │   ├── Card
-│   │   │   │   │   │   │   ├── EmailDestinatarios.vue
-│   │   │   │   │   │   │   ├── Logotipo.vue
-│   │   │   │   │   │   │   └── Tema.vue
-│   │   │   │   │   │   ├── Partials
-│   │   │   │   │   │   │   └── SubTitulo.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   └── EmailEventos.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── EditarSucursal
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── UsuariosValidadoresModal.vue
-│   │   │   │   │   │   ├── Tab
-│   │   │   │   │   │   │   └── SubModule.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   ├── DatosClientesTable.vue
-│   │   │   │   │   │   │   ├── UsuariosTable.vue
-│   │   │   │   │   │   │   └── ValidadoresTable.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── Proveedor
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── CrearProveedor.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   └── Proveedores.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── Sucursales
-│   │   │   │   │   │   ├── Form
-│   │   │   │   │   │   │   └── AgregarClienteForm.vue
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── AgregarClienteModal.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   ├── NovedadesTable.vue
-│   │   │   │   │   │   │   └── SucursalesTable.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── TiposInventarios
-│   │   │   │   │   │   ├── Form
-│   │   │   │   │   │   │   └── AgregarTipoInventarioForm.vue
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── AgregarTipoInventarioModal.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   └── TiposInventariosTable.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── ParametrosLogistica
-│   │   │   │   │   ├── Conductores
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── Agregar.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   └── Conductores.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── Layout
-│   │   │   │   │   │   └── ModuloLayout.vue
-│   │   │   │   │   ├── Transportadoras
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── Agregar.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   └── Transportadoras.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── Vehiculos
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   └── Agregar.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   └── Vehiculos.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   └── Zonas
-│   │   │   │   │       ├── helper
-│   │   │   │   │       │   └── zonasHelper.js
-│   │   │   │   │       ├── Modal
-│   │   │   │   │       │   └── AgregarZonaModal.vue
-│   │   │   │   │       ├── Table
-│   │   │   │   │       │   └── ZonasTable.vue
-│   │   │   │   │       └── Index.vue
-│   │   │   │   ├── Pedidos
-│   │   │   │   │   ├── FactorEmpaque
-│   │   │   │   │   │   ├── Content
-│   │   │   │   │   │   │   └── EditarFactorEmpaque.vue
-│   │   │   │   │   │   ├── Form
-│   │   │   │   │   │   │   ├── InformacionAdicional.vue
-│   │   │   │   │   │   │   ├── ListarFactoresEmpaque.vue
-│   │   │   │   │   │   │   └── ListarProductosFactorEmpaque.vue
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   ├── ActivarFactorEmpaque.vue
-│   │   │   │   │   │   │   └── Productos.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   ├── FactoresEmpaques.vue
-│   │   │   │   │   │   │   ├── ProductosFactorEmpaque.vue
-│   │   │   │   │   │   │   └── ProductosListaPrecios.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── Pedido
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   ├── Periodos
-│   │   │   │   │   │   ├── Form
-│   │   │   │   │   │   │   ├── AgregarCompania.vue
-│   │   │   │   │   │   │   └── AgregarPeriodo.vue
-│   │   │   │   │   │   ├── Modal
-│   │   │   │   │   │   │   ├── AsignarSucursal.vue
-│   │   │   │   │   │   │   ├── BorrarCompania.vue
-│   │   │   │   │   │   │   ├── BorrarSucursal.vue
-│   │   │   │   │   │   │   └── LogsModal.vue
-│   │   │   │   │   │   ├── Partials
-│   │   │   │   │   │   │   ├── AlertSinCompanias.vue
-│   │   │   │   │   │   │   ├── DiasPeriodo.vue
-│   │   │   │   │   │   │   └── NavegadorMeses.vue
-│   │   │   │   │   │   ├── Tab
-│   │   │   │   │   │   │   ├── GestionarCompanias.vue
-│   │   │   │   │   │   │   ├── GestionarPeriodos.vue
-│   │   │   │   │   │   │   └── PeriodosAsignados.vue
-│   │   │   │   │   │   ├── Table
-│   │   │   │   │   │   │   ├── LogsTable.vue
-│   │   │   │   │   │   │   ├── PeriodosSucursales.vue
-│   │   │   │   │   │   │   ├── SucursalesCompania.vue
-│   │   │   │   │   │   │   └── SucursalesDisponibles.vue
-│   │   │   │   │   │   └── Index.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   └── Productos
-│   │   │   │       ├── Criterios
-│   │   │   │       │   ├── Partials
-│   │   │   │       │   │   └── DraggableCard.vue
-│   │   │   │       │   └── Index.vue
-│   │   │   │       ├── ProductoDesabastecido
-│   │   │   │       │   └── Index.vue
-│   │   │   │       ├── ProductoProveedor
-│   │   │   │       │   └── Index.vue
-│   │   │   │       └── Index.vue
-│   │   │   ├── Consultas
-│   │   │   │   ├── ConsultaCantidades
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── agrupacionPorProductoHelper.js
-│   │   │   │   │   │   ├── agrupacionProductosHelper.js
-│   │   │   │   │   │   └── cantidadesHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── AgrupacionPorProductoModal.vue
-│   │   │   │   │   │   └── AgrupacionProductosModal.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   └── EstadisticasCard.vue
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   ├── descargarExcelAgrupado.js
-│   │   │   │   │   │   └── descargarExcelCantidades.js
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── ProductosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── ConsultaPedidoCancelado
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── DetallesPedido.vue
-│   │   │   │   │   │   ├── Reordenamientos.vue
-│   │   │   │   │   │   └── Reordenar.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── Pedidos.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── ConsultaPedidos
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   └── FiltrarPedidos.vue
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── consultaPedidoHelper.js
-│   │   │   │   │   │   └── generarLibroReportes.helper.js
-│   │   │   │   │   ├── Layouts
-│   │   │   │   │   │   └── FiltrosConsulta.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── PedidosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── ConsultaProductos
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   └── descargarExcelConsultaProductos.js
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── Productos.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── DocumentosPendientes
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── documentosPendientesHelper.js
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── EstadosPedidos
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── DetallesPedido.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── FormatoOrdenCompra
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── Ordenes.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── PendientesPedidos
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   └── descargarExcelPedidosPendientes.js
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── PedidosPendientesTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   └── Factura.html
-│   │   │   ├── Financiero
-│   │   │   │   └── EstadoCuenta
-│   │   │   │       ├── reports
-│   │   │   │       │   ├── descargarExcel.js
-│   │   │   │       │   └── descargarExcelHistorial.js
-│   │   │   │       ├── Table
-│   │   │   │       │   └── CuentasTable.vue
-│   │   │   │       └── Index.vue
-│   │   │   ├── GestionIndicadores
-│   │   │   │   └── GestionIndicadores
-│   │   │   │       └── Index.vue
-│   │   │   ├── Integracion
-│   │   │   │   ├── CodigosAlternos
-│   │   │   │   │   ├── Layout
-│   │   │   │   │   │   └── LayoutCodigosAlternos.vue
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── CrearCodigoModal.vue
-│   │   │   │   │   │   ├── ListarSucursalesModal.vue
-│   │   │   │   │   │   └── MostrarHomologosModal.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── CodigosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── CodigosAlternosExcel
-│   │   │   │   │   ├── Card
-│   │   │   │   │   │   ├── CardSugerenciasCodigos.vue
-│   │   │   │   │   │   └── CardSugerenciasHomologaciones.vue
-│   │   │   │   │   ├── Layout
-│   │   │   │   │   │   └── LayoutImportarArchivoPlano.vue
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   ├── descargarPlanoCodigosReport.js
-│   │   │   │   │   │   ├── subirPlanoCodigosReport.js
-│   │   │   │   │   │   └── subirPlanoHomologacion.js
-│   │   │   │   │   ├── Tab
-│   │   │   │   │   │   ├── TabCodigosAlternos.vue
-│   │   │   │   │   │   └── TabHomologacion.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── TableErrores.vue
-│   │   │   │   │   │   └── TableImportacion.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── GestionOrdenes
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── PedidosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── OrdenesDetallesPedido
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── calculosPedidoHelper.js
-│   │   │   │   │   │   ├── gestionPedidosHelper.js
-│   │   │   │   │   │   ├── mapeoProductoHelper.js
-│   │   │   │   │   │   ├── validacionesPedidoHelper.js
-│   │   │   │   │   │   └── validarProductosPedidoHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── CambiarProductoModal.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   ├── HeaderDetalleOrden.vue
-│   │   │   │   │   │   └── InfoDetalleOrden.vue
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   └── desscargarExcelOrdenesDetallePedido.js
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── CambioProductosTable.vue
-│   │   │   │   │   │   └── ProductosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   └── RegistrarCodigosAlternos
-│   │   │   │       ├── Steps
-│   │   │   │       │   ├── HomologacionStep.vue
-│   │   │   │       │   └── ResumenStep.vue
-│   │   │   │       └── Index.vue
-│   │   │   ├── Logistica
-│   │   │   │   ├── DocumentoEntrega
-│   │   │   │   │   ├── Card
-│   │   │   │   │   │   └── DetallesFacturaCard.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── DetallesFacturaTable.vue
-│   │   │   │   │   │   └── PedidosSeleccionadosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── Entrega
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── Envio
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   └── InformacionPedido.vue
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── EditarInformacionEnvio.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   └── BtnEnviarPedidos.vue
-│   │   │   │   │   ├── Stepper
-│   │   │   │   │   │   ├── Content.vue
-│   │   │   │   │   │   └── EnviarPedidos.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── PedidosEnviados.vue
-│   │   │   │   │   │   ├── PedidosPendientes.vue
-│   │   │   │   │   │   └── PedidosSeleccionados.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── Envios
-│   │   │   │   │   ├── Layout
-│   │   │   │   │   │   └── FiltrosTablaLayout.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── EnviosPedidos.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── ReportesNovedades
-│   │   │   │   │   ├── Layout
-│   │   │   │   │   │   └── ListarNovedades.vue
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── VerNovedad.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── DetalleProducto.vue
-│   │   │   │   │   │   ├── NovedadesTable.vue
-│   │   │   │   │   │   └── ProductosPedido.vue
-│   │   │   │   │   ├── Index.vue
-│   │   │   │   │   └── TrazabilidadPedidoLogistica.vue
-│   │   │   │   ├── TrazabilidadReporteNovedad
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── trazabilidadPedidoHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── ModalDetalleFactura.vue
-│   │   │   │   │   │   ├── ModalDetallePedido.vue
-│   │   │   │   │   │   └── ModalInformacionPedido.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   └── InformacionPedido.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── CuentasCobrarTable.vue
-│   │   │   │   │   │   ├── DetalleEnvioTable.vue
-│   │   │   │   │   │   ├── DetalleFacturaTable.vue
-│   │   │   │   │   │   ├── InfoPedidoTable.vue
-│   │   │   │   │   │   ├── ItemsTable.vue
-│   │   │   │   │   │   ├── ProductosPendientesTable.vue
-│   │   │   │   │   │   └── TrazabilidadTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   └── DocumentoDetalleFactura.vue
-│   │   │   ├── Logs
-│   │   │   │   ├── Log
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── LogSesion
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── LogSesion.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   └── Modulos
-│   │   │   │       ├── Form
-│   │   │   │       │   └── ListarLogs.vue
-│   │   │   │       ├── Modal
-│   │   │   │       │   ├── ModalCodigosAlternos
-│   │   │   │       │   │   ├── ModalCodigoAlternoLog.vue
-│   │   │   │       │   │   ├── ModalCrearCodigosExcel.vue
-│   │   │   │       │   │   ├── ModalEditarCodigoAlterno.vue
-│   │   │   │       │   │   └── ModalHomologacion.vue
-│   │   │   │       │   ├── ModalModificarZona
-│   │   │   │       │   │   ├── partials
-│   │   │   │       │   │   │   └── DepartamentosContent.vue
-│   │   │   │       │   │   └── Index.vue
-│   │   │   │       │   ├── ModalUsuarios
-│   │   │   │       │   │   ├── Partials
-│   │   │   │       │   │   │   ├── DatosGeneralesUsuario.vue
-│   │   │   │       │   │   │   └── SucursalUsuario.vue
-│   │   │   │       │   │   ├── ModalActualizarUsuario.vue
-│   │   │   │       │   │   ├── ModalCrearUsuario.vue
-│   │   │   │       │   │   └── ModalEliminarUsuario.vue
-│   │   │   │       │   ├── ModalAgregarSucursales.vue
-│   │   │   │       │   ├── ModalAprobarPedido.vue
-│   │   │   │       │   ├── ModalCambiarProducto.vue
-│   │   │   │       │   ├── ModalCrearRol.vue
-│   │   │   │       │   ├── ModalDeshabilitarPeriodos.vue
-│   │   │   │       │   ├── ModalDetalleLogistica.vue
-│   │   │   │       │   ├── ModalEditarFactorEmpaque.vue
-│   │   │   │       │   ├── ModalEditarPeriodos.vue
-│   │   │   │       │   ├── ModalEditarProductoDesabastecido.vue
-│   │   │   │       │   ├── ModalEditarProveedor.vue
-│   │   │   │       │   ├── ModalEditarTransportadora.vue
-│   │   │   │       │   ├── ModalErrorAprobar.vue
-│   │   │   │       │   ├── ModalHabilitarPeriodos.vue
-│   │   │   │       │   ├── ModalModificarCompania.vue
-│   │   │   │       │   ├── ModalModificarConductor.vue
-│   │   │   │       │   ├── ModalModificarEnvioLogistica.vue
-│   │   │   │       │   ├── ModalModificarParamPedido.vue
-│   │   │   │       │   ├── ModalModificarPedido.vue
-│   │   │   │       │   ├── ModalModificarVehiculo.vue
-│   │   │   │       │   └── ModalPedidoMixto.vue
-│   │   │   │       ├── Table
-│   │   │   │       │   └── Logs.vue
-│   │   │   │       └── Index.vue
-│   │   │   ├── Pedidos
-│   │   │   │   ├── DetalleFactura
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── Facturas.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── DetalleSeguimiento
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── detalleSeguimientoHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── ModalTiposInventario.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   ├── HeaderDetalleSeguimiento.vue
-│   │   │   │   │   │   └── InfoDetalleSeguimiento.vue
-│   │   │   │   │   ├── Tab
-│   │   │   │   │   │   ├── TabEnvios.vue
-│   │   │   │   │   │   ├── TabNovedades.vue
-│   │   │   │   │   │   ├── TabsDetalleSeguimiento.vue
-│   │   │   │   │   │   └── TabTrazabilidad.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── DetallesPedido
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── ProductosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── GestionNovedades
-│   │   │   │   │   ├── constants
-│   │   │   │   │   │   └── novedadesConstants.js
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   └── ListarNovedadesForm.vue
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── novedadesHelper.js
-│   │   │   │   │   │   └── productosHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── VerNovedad.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   └── AlertasCentrosOperacion.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── Novedades.vue
-│   │   │   │   │   │   └── ProductosNovedad.vue
-│   │   │   │   │   ├── Index.vue
-│   │   │   │   │   └── TrazabilidadPedidoNovedades.vue
-│   │   │   │   ├── GestionPedido
-│   │   │   │   │   ├── composables
-│   │   │   │   │   │   ├── useConfiguracionModo.js
-│   │   │   │   │   │   ├── useGestionPedido.js
-│   │   │   │   │   │   └── useGestionProductos.js
-│   │   │   │   │   ├── constants
-│   │   │   │   │   │   └── modosGestionPedido.js
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   └── ListarProductos.vue
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── configuracion-modo.helper.js
-│   │   │   │   │   │   ├── crear-order-json.helper.js
-│   │   │   │   │   │   ├── crear-pedido.helper.js
-│   │   │   │   │   │   └── producto.helper.js
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   ├── AlertComentario.vue
-│   │   │   │   │   │   ├── AlertExpiracionPedido.vue
-│   │   │   │   │   │   ├── AlertFechasCerradas.vue
-│   │   │   │   │   │   ├── AlertPedidoVacio.vue
-│   │   │   │   │   │   └── MigaPanReordenamiento.vue
-│   │   │   │   │   ├── Tab
-│   │   │   │   │   │   ├── GestionPedidos.vue
-│   │   │   │   │   │   └── TabProductos.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── Productos.vue
-│   │   │   │   │   │   └── ProductosPedido.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── Historial
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   └── ListarPedidos.vue
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── historialHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── MasInformacion.vue
-│   │   │   │   │   │   ├── Pendientes.vue
-│   │   │   │   │   │   └── Reordenamientos.vue
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   └── descargarExcelHistorial.js
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── Pedidos.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── OrdenCompra
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── OrdenesCompra.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── PedidoExcel
-│   │   │   │   │   ├── Card
-│   │   │   │   │   │   └── SugerenciasCard.vue
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── productos-pedido.js
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   ├── descargarExcelPedido.js
-│   │   │   │   │   │   └── subirExcelPedido.js
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── PendienteAprobacion
-│   │   │   │   │   ├── composables
-│   │   │   │   │   │   ├── useFiltrosPedidos.js
-│   │   │   │   │   │   └── useSucursalesInactivas.js
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   └── ListarPedidosForm.vue
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── pedidosPendientesHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── ModalErrorAprobar.vue
-│   │   │   │   │   │   └── ModalSucursalesInactivas.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   ├── AlertFechasCerradas.vue
-│   │   │   │   │   │   ├── BtnRefrescar.vue
-│   │   │   │   │   │   └── SelectChip.vue
-│   │   │   │   │   ├── reports
-│   │   │   │   │   │   └── descargarPendienteAprobacion.js
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── PedidosPendientes.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── RegistrarNovedades
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── RegistrarNovedad
-│   │   │   │   │   │   │   └── ItemsPedidoSeleccionadoTable.vue
-│   │   │   │   │   │   ├── BusquedaPedidosTable.vue
-│   │   │   │   │   │   └── NovedadesTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── SeguimientoPedido
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   └── ListarPedidos.vue
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── seguimientoPedidoHelper.js
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── Pedidos.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── TrazabilidadPedidoOrdenCompra
-│   │   │   │   │   ├── ExpandTransitionPedido.vue
-│   │   │   │   │   ├── ModalDataFact.vue
-│   │   │   │   │   ├── ModalDetalleOrder.vue
-│   │   │   │   │   ├── ModalInfoDetail.vue
-│   │   │   │   │   ├── ModalProductoPedidoProveedor.vue
-│   │   │   │   │   ├── ModalRemisionFactura.vue
-│   │   │   │   │   ├── TemplateCuentaCobrar.vue
-│   │   │   │   │   ├── TemplateEnvioMixto.vue
-│   │   │   │   │   ├── TemplateInformacionPedido.vue
-│   │   │   │   │   ├── TemplateProducto.vue
-│   │   │   │   │   ├── TemplateProductoPendiente.vue
-│   │   │   │   │   ├── TemplateSeguimiento.vue
-│   │   │   │   │   └── TemplateTraza.vue
-│   │   │   │   ├── TrazabilidadReporteNovedad
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   └── trazabilidadPedidoHelper.js
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── ModalDetalleFactura.vue
-│   │   │   │   │   │   ├── ModalDetallePedido.vue
-│   │   │   │   │   │   └── ModalInformacionPedido.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   └── InformacionPedido.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── CuentasCobrarTable.vue
-│   │   │   │   │   │   ├── DetalleEnvioTable.vue
-│   │   │   │   │   │   ├── DetalleFacturaTable.vue
-│   │   │   │   │   │   ├── InfoPedidoTable.vue
-│   │   │   │   │   │   ├── ItemsTable.vue
-│   │   │   │   │   │   ├── ProductosPendientesTable.vue
-│   │   │   │   │   │   └── TrazabilidadTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── VerPedidoPendienteAprobacion
-│   │   │   │   │   ├── Alert
-│   │   │   │   │   │   ├── AlertDevolucionVistosBuenos.vue
-│   │   │   │   │   │   ├── AlertExpiracion.vue
-│   │   │   │   │   │   ├── AlertFaltanVistosBuenos.vue
-│   │   │   │   │   │   └── AlertPedidoExpirado.vue
-│   │   │   │   │   ├── Card
-│   │   │   │   │   │   └── UsuariosValidadoresCard.vue
-│   │   │   │   │   ├── composables
-│   │   │   │   │   │   ├── useAbortController.js
-│   │   │   │   │   │   ├── useCatalogoPedido.js
-│   │   │   │   │   │   ├── useDevolucionesPedido.js
-│   │   │   │   │   │   ├── useGuardarPedido.js
-│   │   │   │   │   │   ├── useLogPedido.js
-│   │   │   │   │   │   ├── useOperacionesPedido.js
-│   │   │   │   │   │   ├── usePreaprobarPedido.js
-│   │   │   │   │   │   ├── useProductosPedido.js
-│   │   │   │   │   │   └── useValidadoresPedido.js
-│   │   │   │   │   ├── constants
-│   │   │   │   │   │   └── validadores.js
-│   │   │   │   │   ├── helpers
-│   │   │   │   │   │   ├── alertasHelper.js
-│   │   │   │   │   │   ├── construirDetalleLogProductosHelper.js
-│   │   │   │   │   │   ├── construirPedidoHelper.js
-│   │   │   │   │   │   ├── expiracionHelper.js
-│   │   │   │   │   │   ├── procesarProductosPedidoHelper.js
-│   │   │   │   │   │   ├── productosHelper.js
-│   │   │   │   │   │   ├── validadoresHelper.js
-│   │   │   │   │   │   └── validarAgregarItem.js
-│   │   │   │   │   ├── Layout
-│   │   │   │   │   │   └── DetallesLayout.vue
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── DevolucionesPedidoModal.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   ├── BadgePedido.vue
-│   │   │   │   │   │   ├── BtnAprobar.vue
-│   │   │   │   │   │   ├── BtnDevoluciones.vue
-│   │   │   │   │   │   └── BtnPreaprobarGuardar.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── ProductosPedidoTable.vue
-│   │   │   │   │   │   └── ProductosTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── DetailPedido.vue
-│   │   │   │   ├── DetalleFacturaPedido.vue
-│   │   │   │   ├── PedidoNovedades.vue
-│   │   │   │   ├── TrazabilidadPedidoOrdenCompra.vue
-│   │   │   │   └── TrazabilidadPedidoSeguimiento.vue
-│   │   │   ├── Portafolio
-│   │   │   │   ├── AsignarPortafolioSucursal
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── PortafolioSucursalesTable.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── DescargarPdfPortafolio
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   └── Portafolios.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── ListaPreciosPortafolio
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── DescargarReporte.vue
-│   │   │   │   │   │   └── Productos.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── NuevoPortafolio
-│   │   │   │   │   ├── Form
-│   │   │   │   │   │   ├── AdicionarInformacion.vue
-│   │   │   │   │   │   └── ListarProductos.vue
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   └── VerPortafolio.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   └── ImprimirErrores.vue
-│   │   │   │   │   ├── Stepper
-│   │   │   │   │   │   └── CrearEditarPortafolio.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── Portafolios.vue
-│   │   │   │   │   │   ├── ProductosPortafolio.vue
-│   │   │   │   │   │   └── SeleccionarProductos.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   └── SubirExcelPortafolio
-│   │   │   │       ├── helpers
-│   │   │   │       │   └── helper.js
-│   │   │   │       ├── reports
-│   │   │   │       │   ├── descargarExcel.reports.js
-│   │   │   │       │   └── procesarExcel.reports.js
-│   │   │   │       └── Index.vue
-│   │   │   ├── Users
-│   │   │   │   ├── GestionUsuario
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── AsociarCompania.vue
-│   │   │   │   │   │   ├── CambiarEstadoRol.vue
-│   │   │   │   │   │   ├── CambiarEstadoUsuario.vue
-│   │   │   │   │   │   ├── CrearRol.vue
-│   │   │   │   │   │   └── CrearUsuario.vue
-│   │   │   │   │   ├── Partials
-│   │   │   │   │   │   └── BtnRefrescar.vue
-│   │   │   │   │   ├── Tab
-│   │   │   │   │   │   ├── GestionUsuario.vue
-│   │   │   │   │   │   ├── TabRoles.vue
-│   │   │   │   │   │   ├── TabUsuarios.vue
-│   │   │   │   │   │   └── TabUsuariosEliminados.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── CompaniasAsociadas.vue
-│   │   │   │   │   │   ├── Roles.vue
-│   │   │   │   │   │   ├── Usuarios.vue
-│   │   │   │   │   │   └── UsuariosEliminados.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   ├── UsuariosApi
-│   │   │   │   │   ├── Modal
-│   │   │   │   │   │   ├── ModalAsociarSucursal.vue
-│   │   │   │   │   │   └── ModalCrearUsuario.vue
-│   │   │   │   │   ├── Table
-│   │   │   │   │   │   ├── TableSucursalesAsociadas.vue
-│   │   │   │   │   │   └── TableUsuarios.vue
-│   │   │   │   │   └── Index.vue
-│   │   │   │   └── ForgotPassword.vue
-│   │   │   ├── Home.vue
-│   │   │   └── Login.vue
-│   │   ├── App.vue
-│   │   └── main.js
-│   ├── .dockerignore
-│   ├── .env
-│   ├── .env.ceinme
-│   ├── .env.cfim
-│   ├── .eslintignore
-│   ├── .eslintrc.json
-│   ├── .gitignore
-│   ├── .lintstagedrc
-│   ├── .prettierrc
-│   ├── babel.config.js
-│   ├── Dockerfile
-│   ├── example.env
-│   ├── example.production.env
-│   ├── index.html
-│   ├── package-lock.json
-│   ├── package.json
-│   ├── README.md
+│   │   └── views
+│   │       ├── Configurar
+│   │       │   ├── Generales
+│   │       │   │   ├── BodegaTipoInventario
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── AsociarBodega.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       └── Bodegas.vue
+│   │       │   │   ├── CentrosOperacion
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   └── Modal
+│   │       │   │   │       └── CrearCentroOperacion.vue
+│   │       │   │   ├── Compania
+│   │       │   │   │   ├── Acordeon
+│   │       │   │   │   │   ├── AcordeonSubmodulo.vue
+│   │       │   │   │   │   ├── General.vue
+│   │       │   │   │   │   ├── Imagen.vue
+│   │       │   │   │   │   ├── Mensajeria.vue
+│   │       │   │   │   │   └── Servicios.vue
+│   │       │   │   │   ├── Card
+│   │       │   │   │   │   ├── EmailDestinatarios.vue
+│   │       │   │   │   │   ├── Logotipo.vue
+│   │       │   │   │   │   └── Tema.vue
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Partials
+│   │       │   │   │   │   └── SubTitulo.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       └── EmailEventos.vue
+│   │       │   │   ├── EditarSucursal
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── UsuariosValidadoresModal.vue
+│   │       │   │   │   ├── Tab
+│   │       │   │   │   │   └── SubModule.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       ├── DatosClientesTable.vue
+│   │       │   │   │       ├── UsuariosTable.vue
+│   │       │   │   │       └── ValidadoresTable.vue
+│   │       │   │   ├── GruposCodigosAlternos
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── CrearGrupoModal.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       └── GruposCodigosAlternosTable.vue
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Proveedor
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── CrearProveedor.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       └── Proveedores.vue
+│   │       │   │   ├── Sucursales
+│   │       │   │   │   ├── Form
+│   │       │   │   │   │   └── AgregarClienteForm.vue
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── AgregarClienteModal.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       ├── NovedadesTable.vue
+│   │       │   │   │       └── SucursalesTable.vue
+│   │       │   │   └── TiposInventarios
+│   │       │   │       ├── Form
+│   │       │   │       │   └── AgregarTipoInventarioForm.vue
+│   │       │   │       ├── Index.vue
+│   │       │   │       ├── Modal
+│   │       │   │       │   └── AgregarTipoInventarioModal.vue
+│   │       │   │       └── Table
+│   │       │   │           └── TiposInventariosTable.vue
+│   │       │   ├── ParametrosLogistica
+│   │       │   │   ├── Conductores
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── Agregar.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       └── Conductores.vue
+│   │       │   │   ├── Layout
+│   │       │   │   │   └── ModuloLayout.vue
+│   │       │   │   ├── Transportadoras
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── Agregar.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       └── Transportadoras.vue
+│   │       │   │   ├── Vehiculos
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   └── Agregar.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       └── Vehiculos.vue
+│   │       │   │   └── Zonas
+│   │       │   │       ├── helper
+│   │       │   │       │   └── zonasHelper.js
+│   │       │   │       ├── Index.vue
+│   │       │   │       ├── Modal
+│   │       │   │       │   └── AgregarZonaModal.vue
+│   │       │   │       └── Table
+│   │       │   │           └── ZonasTable.vue
+│   │       │   ├── Pedidos
+│   │       │   │   ├── FactorEmpaque
+│   │       │   │   │   ├── Content
+│   │       │   │   │   │   └── EditarFactorEmpaque.vue
+│   │       │   │   │   ├── Form
+│   │       │   │   │   │   ├── InformacionAdicional.vue
+│   │       │   │   │   │   ├── ListarFactoresEmpaque.vue
+│   │       │   │   │   │   └── ListarProductosFactorEmpaque.vue
+│   │       │   │   │   ├── Index.vue
+│   │       │   │   │   ├── Modal
+│   │       │   │   │   │   ├── ActivarFactorEmpaque.vue
+│   │       │   │   │   │   └── Productos.vue
+│   │       │   │   │   └── Table
+│   │       │   │   │       ├── FactoresEmpaques.vue
+│   │       │   │   │       ├── ProductosFactorEmpaque.vue
+│   │       │   │   │       └── ProductosListaPrecios.vue
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Pedido
+│   │       │   │   │   └── Index.vue
+│   │       │   │   └── Periodos
+│   │       │   │       ├── Form
+│   │       │   │       │   ├── AgregarCompania.vue
+│   │       │   │       │   └── AgregarPeriodo.vue
+│   │       │   │       ├── Index.vue
+│   │       │   │       ├── Modal
+│   │       │   │       │   ├── AsignarSucursal.vue
+│   │       │   │       │   ├── BorrarCompania.vue
+│   │       │   │       │   ├── BorrarSucursal.vue
+│   │       │   │       │   └── LogsModal.vue
+│   │       │   │       ├── Partials
+│   │       │   │       │   ├── AlertSinCompanias.vue
+│   │       │   │       │   ├── DiasPeriodo.vue
+│   │       │   │       │   └── NavegadorMeses.vue
+│   │       │   │       ├── Tab
+│   │       │   │       │   ├── GestionarCompanias.vue
+│   │       │   │       │   ├── GestionarPeriodos.vue
+│   │       │   │       │   └── PeriodosAsignados.vue
+│   │       │   │       └── Table
+│   │       │   │           ├── LogsTable.vue
+│   │       │   │           ├── PeriodosSucursales.vue
+│   │       │   │           ├── SucursalesCompania.vue
+│   │       │   │           └── SucursalesDisponibles.vue
+│   │       │   └── Productos
+│   │       │       ├── Criterios
+│   │       │       │   ├── Index.vue
+│   │       │       │   └── Partials
+│   │       │       │       └── DraggableCard.vue
+│   │       │       ├── Index.vue
+│   │       │       ├── ProductoDesabastecido
+│   │       │       │   └── Index.vue
+│   │       │       └── ProductoProveedor
+│   │       │           └── Index.vue
+│   │       ├── Consultas
+│   │       │   ├── ConsultaCantidades
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── agrupacionPorProductoHelper.js
+│   │       │   │   │   ├── agrupacionProductosHelper.js
+│   │       │   │   │   └── cantidadesHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   ├── AgrupacionPorProductoModal.vue
+│   │       │   │   │   └── AgrupacionProductosModal.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   └── EstadisticasCard.vue
+│   │       │   │   ├── reports
+│   │       │   │   │   ├── descargarExcelAgrupado.js
+│   │       │   │   │   └── descargarExcelCantidades.js
+│   │       │   │   └── Table
+│   │       │   │       └── ProductosTable.vue
+│   │       │   ├── ConsultaPedidoCancelado
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   ├── DetallesPedido.vue
+│   │       │   │   │   ├── Reordenamientos.vue
+│   │       │   │   │   └── Reordenar.vue
+│   │       │   │   └── Table
+│   │       │   │       └── Pedidos.vue
+│   │       │   ├── ConsultaPedidos
+│   │       │   │   ├── Form
+│   │       │   │   │   └── FiltrarPedidos.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── consultaPedidoHelper.js
+│   │       │   │   │   └── generarLibroReportes.helper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Layouts
+│   │       │   │   │   └── FiltrosConsulta.vue
+│   │       │   │   └── Table
+│   │       │   │       └── PedidosTable.vue
+│   │       │   ├── ConsultaProductos
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── reports
+│   │       │   │   │   └── descargarExcelConsultaProductos.js
+│   │       │   │   └── Table
+│   │       │   │       └── Productos.vue
+│   │       │   ├── DocumentosPendientes
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── documentosPendientesHelper.js
+│   │       │   │   └── Index.vue
+│   │       │   ├── EstadosPedidos
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Modal
+│   │       │   │       └── DetallesPedido.vue
+│   │       │   ├── Factura.html
+│   │       │   ├── FormatoOrdenCompra
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── Ordenes.vue
+│   │       │   └── PendientesPedidos
+│   │       │       ├── Index.vue
+│   │       │       ├── reports
+│   │       │       │   └── descargarExcelPedidosPendientes.js
+│   │       │       └── Table
+│   │       │           └── PedidosPendientesTable.vue
+│   │       ├── Financiero
+│   │       │   └── EstadoCuenta
+│   │       │       ├── Index.vue
+│   │       │       ├── reports
+│   │       │       │   ├── descargarExcel.js
+│   │       │       │   └── descargarExcelHistorial.js
+│   │       │       └── Table
+│   │       │           └── CuentasTable.vue
+│   │       ├── GestionIndicadores
+│   │       │   └── GestionIndicadores
+│   │       │       └── Index.vue
+│   │       ├── Home.vue
+│   │       ├── Integracion
+│   │       │   ├── CodigosAlternos
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Layout
+│   │       │   │   │   └── LayoutCodigosAlternos.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   ├── CrearCodigoModal.vue
+│   │       │   │   │   ├── ListarSucursalesModal.vue
+│   │       │   │   │   └── MostrarHomologosModal.vue
+│   │       │   │   └── Table
+│   │       │   │       └── CodigosTable.vue
+│   │       │   ├── CodigosAlternosExcel
+│   │       │   │   ├── Card
+│   │       │   │   │   ├── CardSugerenciasCodigos.vue
+│   │       │   │   │   └── CardSugerenciasHomologaciones.vue
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Layout
+│   │       │   │   │   └── LayoutImportarArchivoPlano.vue
+│   │       │   │   ├── reports
+│   │       │   │   │   ├── descargarPlanoCodigosReport.js
+│   │       │   │   │   ├── subirPlanoCodigosReport.js
+│   │       │   │   │   └── subirPlanoHomologacion.js
+│   │       │   │   ├── Tab
+│   │       │   │   │   ├── TabCodigosAlternos.vue
+│   │       │   │   │   └── TabHomologacion.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── TableErrores.vue
+│   │       │   │       └── TableImportacion.vue
+│   │       │   ├── GestionOrdenes
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── PedidosTable.vue
+│   │       │   ├── OrdenesDetallesPedido
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── calculosPedidoHelper.js
+│   │       │   │   │   ├── gestionPedidosHelper.js
+│   │       │   │   │   ├── mapeoProductoHelper.js
+│   │       │   │   │   ├── validacionesPedidoHelper.js
+│   │       │   │   │   └── validarProductosPedidoHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── CambiarProductoModal.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   ├── HeaderDetalleOrden.vue
+│   │       │   │   │   └── InfoDetalleOrden.vue
+│   │       │   │   ├── reports
+│   │       │   │   │   └── desscargarExcelOrdenesDetallePedido.js
+│   │       │   │   └── Table
+│   │       │   │       ├── CambioProductosTable.vue
+│   │       │   │       └── ProductosTable.vue
+│   │       │   └── RegistrarCodigosAlternos
+│   │       │       ├── Index.vue
+│   │       │       └── Steps
+│   │       │           ├── HomologacionStep.vue
+│   │       │           └── ResumenStep.vue
+│   │       ├── Login.vue
+│   │       ├── Logistica
+│   │       │   ├── DocumentoDetalleFactura.vue
+│   │       │   ├── DocumentoEntrega
+│   │       │   │   ├── Card
+│   │       │   │   │   └── DetallesFacturaCard.vue
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── DetallesFacturaTable.vue
+│   │       │   │       └── PedidosSeleccionadosTable.vue
+│   │       │   ├── Entrega
+│   │       │   │   └── Index.vue
+│   │       │   ├── Envio
+│   │       │   │   ├── Form
+│   │       │   │   │   └── InformacionPedido.vue
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── EditarInformacionEnvio.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   └── BtnEnviarPedidos.vue
+│   │       │   │   ├── Stepper
+│   │       │   │   │   ├── Content.vue
+│   │       │   │   │   └── EnviarPedidos.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── PedidosEnviados.vue
+│   │       │   │       ├── PedidosPendientes.vue
+│   │       │   │       └── PedidosSeleccionados.vue
+│   │       │   ├── Envios
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Layout
+│   │       │   │   │   └── FiltrosTablaLayout.vue
+│   │       │   │   └── Table
+│   │       │   │       └── EnviosPedidos.vue
+│   │       │   ├── ReportesNovedades
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Layout
+│   │       │   │   │   └── ListarNovedades.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── VerNovedad.vue
+│   │       │   │   ├── Table
+│   │       │   │   │   ├── DetalleProducto.vue
+│   │       │   │   │   ├── NovedadesTable.vue
+│   │       │   │   │   └── ProductosPedido.vue
+│   │       │   │   └── TrazabilidadPedidoLogistica.vue
+│   │       │   └── TrazabilidadReporteNovedad
+│   │       │       ├── helpers
+│   │       │       │   └── trazabilidadPedidoHelper.js
+│   │       │       ├── Index.vue
+│   │       │       ├── Modal
+│   │       │       │   ├── ModalDetalleFactura.vue
+│   │       │       │   ├── ModalDetallePedido.vue
+│   │       │       │   └── ModalInformacionPedido.vue
+│   │       │       ├── Partials
+│   │       │       │   └── InformacionPedido.vue
+│   │       │       └── Table
+│   │       │           ├── CuentasCobrarTable.vue
+│   │       │           ├── DetalleEnvioTable.vue
+│   │       │           ├── DetalleFacturaTable.vue
+│   │       │           ├── InfoPedidoTable.vue
+│   │       │           ├── ItemsTable.vue
+│   │       │           ├── ProductosPendientesTable.vue
+│   │       │           └── TrazabilidadTable.vue
+│   │       ├── Logs
+│   │       │   ├── Log
+│   │       │   │   └── Index.vue
+│   │       │   ├── LogSesion
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── LogSesion.vue
+│   │       │   └── Modulos
+│   │       │       ├── Form
+│   │       │       │   └── ListarLogs.vue
+│   │       │       ├── Index.vue
+│   │       │       ├── Modal
+│   │       │       │   ├── ModalAgregarSucursales.vue
+│   │       │       │   ├── ModalAprobarPedido.vue
+│   │       │       │   ├── ModalCambiarProducto.vue
+│   │       │       │   ├── ModalCodigosAlternos
+│   │       │       │   │   ├── ModalCodigoAlternoLog.vue
+│   │       │       │   │   ├── ModalCrearCodigosExcel.vue
+│   │       │       │   │   ├── ModalEditarCodigoAlterno.vue
+│   │       │       │   │   └── ModalHomologacion.vue
+│   │       │       │   ├── ModalCrearRol.vue
+│   │       │       │   ├── ModalDeshabilitarPeriodos.vue
+│   │       │       │   ├── ModalDetalleLogistica.vue
+│   │       │       │   ├── ModalEditarFactorEmpaque.vue
+│   │       │       │   ├── ModalEditarPeriodos.vue
+│   │       │       │   ├── ModalEditarProductoDesabastecido.vue
+│   │       │       │   ├── ModalEditarProveedor.vue
+│   │       │       │   ├── ModalEditarTransportadora.vue
+│   │       │       │   ├── ModalErrorAprobar.vue
+│   │       │       │   ├── ModalHabilitarPeriodos.vue
+│   │       │       │   ├── ModalModificarCompania.vue
+│   │       │       │   ├── ModalModificarConductor.vue
+│   │       │       │   ├── ModalModificarEnvioLogistica.vue
+│   │       │       │   ├── ModalModificarParamPedido.vue
+│   │       │       │   ├── ModalModificarPedido.vue
+│   │       │       │   ├── ModalModificarVehiculo.vue
+│   │       │       │   ├── ModalModificarZona
+│   │       │       │   │   ├── Index.vue
+│   │       │       │   │   └── partials
+│   │       │       │   │       └── DepartamentosContent.vue
+│   │       │       │   ├── ModalPedidoMixto.vue
+│   │       │       │   └── ModalUsuarios
+│   │       │       │       ├── ModalActualizarUsuario.vue
+│   │       │       │       ├── ModalCrearUsuario.vue
+│   │       │       │       ├── ModalEliminarUsuario.vue
+│   │       │       │       └── Partials
+│   │       │       │           ├── DatosGeneralesUsuario.vue
+│   │       │       │           └── SucursalUsuario.vue
+│   │       │       └── Table
+│   │       │           └── Logs.vue
+│   │       ├── Pedidos
+│   │       │   ├── DetailPedido.vue
+│   │       │   ├── DetalleFactura
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── Facturas.vue
+│   │       │   ├── DetalleFacturaPedido.vue
+│   │       │   ├── DetalleSeguimiento
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── detalleSeguimientoHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── ModalTiposInventario.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   ├── HeaderDetalleSeguimiento.vue
+│   │       │   │   │   └── InfoDetalleSeguimiento.vue
+│   │       │   │   └── Tab
+│   │       │   │       ├── TabEnvios.vue
+│   │       │   │       ├── TabNovedades.vue
+│   │       │   │       ├── TabsDetalleSeguimiento.vue
+│   │       │   │       └── TabTrazabilidad.vue
+│   │       │   ├── DetallesPedido
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── ProductosTable.vue
+│   │       │   ├── GestionNovedades
+│   │       │   │   ├── constants
+│   │       │   │   │   └── novedadesConstants.js
+│   │       │   │   ├── Form
+│   │       │   │   │   └── ListarNovedadesForm.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── novedadesHelper.js
+│   │       │   │   │   └── productosHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── VerNovedad.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   └── AlertasCentrosOperacion.vue
+│   │       │   │   ├── Table
+│   │       │   │   │   ├── Novedades.vue
+│   │       │   │   │   └── ProductosNovedad.vue
+│   │       │   │   └── TrazabilidadPedidoNovedades.vue
+│   │       │   ├── GestionPedido
+│   │       │   │   ├── composables
+│   │       │   │   │   ├── useConfiguracionModo.js
+│   │       │   │   │   ├── useGestionPedido.js
+│   │       │   │   │   └── useGestionProductos.js
+│   │       │   │   ├── constants
+│   │       │   │   │   └── modosGestionPedido.js
+│   │       │   │   ├── Form
+│   │       │   │   │   └── ListarProductos.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── configuracion-modo.helper.js
+│   │       │   │   │   ├── crear-order-json.helper.js
+│   │       │   │   │   ├── crear-pedido.helper.js
+│   │       │   │   │   └── producto.helper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   ├── AlertComentario.vue
+│   │       │   │   │   ├── AlertExpiracionPedido.vue
+│   │       │   │   │   ├── AlertFechasCerradas.vue
+│   │       │   │   │   ├── AlertPedidoVacio.vue
+│   │       │   │   │   └── MigaPanReordenamiento.vue
+│   │       │   │   ├── Tab
+│   │       │   │   │   ├── GestionPedidos.vue
+│   │       │   │   │   └── TabProductos.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── Productos.vue
+│   │       │   │       └── ProductosPedido.vue
+│   │       │   ├── Historial
+│   │       │   │   ├── Form
+│   │       │   │   │   └── ListarPedidos.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── filtrosHistorialHelper.js
+│   │       │   │   │   ├── formateoHistorialHelper.js
+│   │       │   │   │   ├── historialHelper.js
+│   │       │   │   │   └── storageHistorialHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── ModalDialog.vue
+│   │       │   │   ├── reports
+│   │       │   │   │   └── descargarExcelHistorial.js
+│   │       │   │   └── Table
+│   │       │   │       ├── MasInformacion.vue
+│   │       │   │       ├── Pedidos.vue
+│   │       │   │       ├── Pendientes.vue
+│   │       │   │       └── Reordenamientos.vue
+│   │       │   ├── OrdenCompra
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── OrdenesCompra.vue
+│   │       │   ├── PedidoExcel
+│   │       │   │   ├── Card
+│   │       │   │   │   └── SugerenciasCard.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── productos-pedido.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── reports
+│   │       │   │       ├── descargarExcelPedido.js
+│   │       │   │       └── subirExcelPedido.js
+│   │       │   ├── PedidoNovedades.vue
+│   │       │   ├── PendienteAprobacion
+│   │       │   │   ├── composables
+│   │       │   │   │   ├── useFiltrosPedidos.js
+│   │       │   │   │   └── useSucursalesInactivas.js
+│   │       │   │   ├── Form
+│   │       │   │   │   └── ListarPedidosForm.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── pedidosPendientesHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   ├── ModalErrorAprobar.vue
+│   │       │   │   │   └── ModalSucursalesInactivas.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   ├── AlertFechasCerradas.vue
+│   │       │   │   │   ├── BtnRefrescar.vue
+│   │       │   │   │   └── SelectChip.vue
+│   │       │   │   ├── reports
+│   │       │   │   │   └── descargarPendienteAprobacion.js
+│   │       │   │   └── Table
+│   │       │   │       └── PedidosPendientes.vue
+│   │       │   ├── RegistrarNovedades
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── BusquedaPedidosTable.vue
+│   │       │   │       ├── NovedadesTable.vue
+│   │       │   │       └── RegistrarNovedad
+│   │       │   │           └── ItemsPedidoSeleccionadoTable.vue
+│   │       │   ├── SeguimientoPedido
+│   │       │   │   ├── Form
+│   │       │   │   │   └── ListarPedidos.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── seguimientoPedidoHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── Pedidos.vue
+│   │       │   ├── TrazabilidadPedidoOrdenCompra
+│   │       │   │   ├── ExpandTransitionPedido.vue
+│   │       │   │   ├── ModalDataFact.vue
+│   │       │   │   ├── ModalDetalleOrder.vue
+│   │       │   │   ├── ModalInfoDetail.vue
+│   │       │   │   ├── ModalProductoPedidoProveedor.vue
+│   │       │   │   ├── ModalRemisionFactura.vue
+│   │       │   │   ├── TemplateCuentaCobrar.vue
+│   │       │   │   ├── TemplateEnvioMixto.vue
+│   │       │   │   ├── TemplateInformacionPedido.vue
+│   │       │   │   ├── TemplateProducto.vue
+│   │       │   │   ├── TemplateProductoPendiente.vue
+│   │       │   │   ├── TemplateSeguimiento.vue
+│   │       │   │   └── TemplateTraza.vue
+│   │       │   ├── TrazabilidadPedidoOrdenCompra.vue
+│   │       │   ├── TrazabilidadPedidoSeguimiento.vue
+│   │       │   ├── TrazabilidadReporteNovedad
+│   │       │   │   ├── helpers
+│   │       │   │   │   └── trazabilidadPedidoHelper.js
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   ├── ModalDetalleFactura.vue
+│   │       │   │   │   ├── ModalDetallePedido.vue
+│   │       │   │   │   └── ModalInformacionPedido.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   └── InformacionPedido.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── CuentasCobrarTable.vue
+│   │       │   │       ├── DetalleEnvioTable.vue
+│   │       │   │       ├── DetalleFacturaTable.vue
+│   │       │   │       ├── InfoPedidoTable.vue
+│   │       │   │       ├── ItemsTable.vue
+│   │       │   │       ├── ProductosPendientesTable.vue
+│   │       │   │       └── TrazabilidadTable.vue
+│   │       │   └── VerPedidoPendienteAprobacion
+│   │       │       ├── Alert
+│   │       │       │   ├── AlertDevolucionVistosBuenos.vue
+│   │       │       │   ├── AlertExpiracion.vue
+│   │       │       │   ├── AlertFaltanVistosBuenos.vue
+│   │       │       │   └── AlertPedidoExpirado.vue
+│   │       │       ├── Card
+│   │       │       │   └── UsuariosValidadoresCard.vue
+│   │       │       ├── composables
+│   │       │       │   ├── useAbortController.js
+│   │       │       │   ├── useCatalogoPedido.js
+│   │       │       │   ├── useDevolucionesPedido.js
+│   │       │       │   ├── useGuardarPedido.js
+│   │       │       │   ├── useLogPedido.js
+│   │       │       │   ├── useOperacionesPedido.js
+│   │       │       │   ├── usePreaprobarPedido.js
+│   │       │       │   ├── useProductosPedido.js
+│   │       │       │   └── useValidadoresPedido.js
+│   │       │       ├── constants
+│   │       │       │   └── validadores.js
+│   │       │       ├── helpers
+│   │       │       │   ├── alertasHelper.js
+│   │       │       │   ├── construirPedidoHelper.js
+│   │       │       │   ├── expiracionHelper.js
+│   │       │       │   ├── procesarProductosPedidoHelper.js
+│   │       │       │   ├── productosHelper.js
+│   │       │       │   ├── validadoresHelper.js
+│   │       │       │   └── validarAgregarItem.js
+│   │       │       ├── Index.vue
+│   │       │       ├── Layout
+│   │       │       │   └── DetallesLayout.vue
+│   │       │       ├── Modal
+│   │       │       │   └── DevolucionesPedidoModal.vue
+│   │       │       ├── Partials
+│   │       │       │   ├── BadgePedido.vue
+│   │       │       │   ├── BtnAprobar.vue
+│   │       │       │   ├── BtnDevoluciones.vue
+│   │       │       │   └── BtnPreaprobarGuardar.vue
+│   │       │       └── Table
+│   │       │           ├── ProductosPedidoTable.vue
+│   │       │           └── ProductosTable.vue
+│   │       ├── Portafolio
+│   │       │   ├── AsignarPortafolioSucursal
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── PortafolioSucursalesTable.vue
+│   │       │   ├── DescargarPdfPortafolio
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       └── Portafolios.vue
+│   │       │   ├── ListaPreciosPortafolio
+│   │       │   │   ├── Index.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── DescargarReporte.vue
+│   │       │   │       └── Productos.vue
+│   │       │   ├── NuevoPortafolio
+│   │       │   │   ├── Form
+│   │       │   │   │   ├── AdicionarInformacion.vue
+│   │       │   │   │   └── ListarProductos.vue
+│   │       │   │   ├── Index.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── VerPortafolio.vue
+│   │       │   │   ├── Partials
+│   │       │   │   │   └── ImprimirErrores.vue
+│   │       │   │   ├── Stepper
+│   │       │   │   │   └── CrearEditarPortafolio.vue
+│   │       │   │   └── Table
+│   │       │   │       ├── Portafolios.vue
+│   │       │   │       ├── ProductosPortafolio.vue
+│   │       │   │       └── SeleccionarProductos.vue
+│   │       │   └── SubirExcelPortafolio
+│   │       │       ├── helpers
+│   │       │       │   └── helper.js
+│   │       │       ├── Index.vue
+│   │       │       └── reports
+│   │       │           ├── descargarExcel.reports.js
+│   │       │           └── procesarExcel.reports.js
+│   │       └── Users
+│   │           ├── ForgotPassword.vue
+│   │           ├── GestionUsuario
+│   │           │   ├── Index.vue
+│   │           │   ├── Modal
+│   │           │   │   ├── AsociarCompania.vue
+│   │           │   │   ├── CambiarEstadoRol.vue
+│   │           │   │   ├── CambiarEstadoUsuario.vue
+│   │           │   │   ├── CrearRol.vue
+│   │           │   │   └── CrearUsuario.vue
+│   │           │   ├── Partials
+│   │           │   │   └── BtnRefrescar.vue
+│   │           │   ├── Tab
+│   │           │   │   ├── GestionUsuario.vue
+│   │           │   │   ├── TabRoles.vue
+│   │           │   │   ├── TabUsuarios.vue
+│   │           │   │   └── TabUsuariosEliminados.vue
+│   │           │   └── Table
+│   │           │       ├── CompaniasAsociadas.vue
+│   │           │       ├── Roles.vue
+│   │           │       ├── Usuarios.vue
+│   │           │       └── UsuariosEliminados.vue
+│   │           └── UsuariosApi
+│   │               ├── Index.vue
+│   │               ├── Modal
+│   │               │   ├── ModalAsociarSucursal.vue
+│   │               │   └── ModalCrearUsuario.vue
+│   │               └── Table
+│   │                   ├── TableSucursalesAsociadas.vue
+│   │                   └── TableUsuarios.vue
 │   └── vite.config.js
-├── .env
-├── .gitignore
-├── arquitectura.ps1
-├── bitbucket-pipelines.yml
-├── docker-compose.yml
 ├── README.md
 └── sonar-project.properties
