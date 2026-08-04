@@ -88,7 +88,9 @@
 │       │   └── tipos-planos.js
 │       ├── custom
 │       │   └── swagger
+│       │       ├── swagger-contrato-api.js
 │       │       ├── swagger-dinamico.js
+│       │       ├── swagger-filtros.js
 │       │       ├── swagger-public-client.js
 │       │       └── swagger-ui-options.js
 │       ├── data
