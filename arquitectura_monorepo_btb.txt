@@ -464,6 +464,7 @@
 │       │   │   │   │   │   ├── filtros-por-usuario.helper.js
 │       │   │   │   │   │   ├── filtros-productos-cantidades.helper.js
 │       │   │   │   │   │   ├── filtros.helper.js
+│       │   │   │   │   │   ├── gestion-ordenes.helper.js
 │       │   │   │   │   │   ├── interfazar-pedidos.helper.js
 │       │   │   │   │   │   └── pedidos-activos.helper.js
 │       │   │   │   │   ├── models
@@ -480,8 +481,10 @@
 │       │   │   │   │   │   ├── actualizar-producto-pedido.schema.js
 │       │   │   │   │   │   ├── actualizar-validadores-pedido.schema.js
 │       │   │   │   │   │   ├── aprobar-pedido.schema.js
+│       │   │   │   │   │   ├── buscar-historial.schema.js
 │       │   │   │   │   │   ├── consulta-pedidos.schema.js
 │       │   │   │   │   │   ├── crear-pedido.schema.js
+│       │   │   │   │   │   ├── gestion-ordenes.schema.js
 │       │   │   │   │   │   ├── index.js
 │       │   │   │   │   │   ├── preaprobar-pedido.schema.js
 │       │   │   │   │   │   └── swagger.yaml
@@ -489,7 +492,8 @@
 │       │   │   │   │   │   ├── buscar-productos-cantidades.service.js
 │       │   │   │   │   │   ├── crear-pedido-clinicas.service.js
 │       │   │   │   │   │   ├── crear-pedido.service.js
-│       │   │   │   │   │   └── notificaciones-pedidos.service.js
+│       │   │   │   │   │   ├── notificaciones-pedidos.service.js
+│       │   │   │   │   │   └── pedidos-gestion-ordenes.service.js
 │       │   │   │   │   └── swagger.yaml
 │       │   │   │   ├── pedidos-devoluciones
 │       │   │   │   │   ├── models
@@ -587,6 +591,8 @@
 │       │   │   │   │   ├── factores-empaque.controller.js
 │       │   │   │   │   ├── factores-empaque.routes.js
 │       │   │   │   │   ├── factores-empaque.service.js
+│       │   │   │   │   ├── helpers
+│       │   │   │   │   │   └── filtros.helper.js
 │       │   │   │   │   ├── models
 │       │   │   │   │   │   ├── factor-empaque.model.js
 │       │   │   │   │   │   └── swagger.yaml
@@ -746,8 +752,11 @@
 │       │   │       ├── helpers
 │       │   │       │   ├── contruir-url-connekta.helper.js
 │       │   │       │   └── filtros-connekta.helper.js
+│       │   │       ├── Models
+│       │   │       │   └── swagger.yaml
 │       │   │       ├── schema
-│       │   │       │   └── connekta.schema.js
+│       │   │       │   ├── connekta.schema.js
+│       │   │       │   └── movimiento-pedido.schema.js
 │       │   │       └── swagger.yaml
 │       │   └── publics
 │       │       ├── auth
@@ -763,7 +772,9 @@
 │       │       │   ├── connekta.routes.js
 │       │       │   ├── connekta.service.js
 │       │       │   ├── schema
-│       │       │   │   └── connekta.schema.js
+│       │       │   │   ├── connekta-items.schema.js
+│       │       │   │   ├── connekta.schema.js
+│       │       │   │   └── existencias-bodegas-lotes.schema.js
 │       │       │   └── swagger.yaml
 │       │       ├── pedidos
 │       │       │   ├── pedidos.controller.js
@@ -818,6 +829,7 @@
 │           ├── excelJsUtil.js
 │           ├── fechaLocal.util.js
 │           ├── filtros-fecha.util.js
+│           ├── filtros.util.js
 │           ├── formateadorNumerico.util.js
 │           ├── integration-key.util.js
 │           ├── normaliza-texto.util.js
@@ -872,6 +884,7 @@
 │   │   │       │   ├── ApiMunicipiosService.js
 │   │   │       │   ├── CodigoAlternoService.js
 │   │   │       │   ├── ConductorService.js
+│   │   │       │   ├── ConnektaService.js
 │   │   │       │   ├── ControlPanoService.js
 │   │   │       │   ├── EnviosService.js
 │   │   │       │   ├── FactorEmpaqueService.js
@@ -930,6 +943,7 @@
 │   │   │   ├── Avatar.vue
 │   │   │   ├── Common
 │   │   │   │   ├── ArbolPermisos.vue
+│   │   │   │   ├── ContadorChips.vue
 │   │   │   │   └── ItemVistaArbol.vue
 │   │   │   ├── Footer.vue
 │   │   │   ├── Form
@@ -1050,7 +1064,8 @@
 │   │   │   └── excelJsData.js
 │   │   ├── decorators
 │   │   │   ├── headersExcelJsDecorator.js
-│   │   │   └── tableExcelJsDecorator.js
+│   │   │   ├── tableExcelJsDecorator.js
+│   │   │   └── tableSubFilasExcelJsDecorator.js
 │   │   ├── guards
 │   │   │   ├── loginGuard.js
 │   │   │   └── permisoGuard.js
@@ -1120,7 +1135,8 @@
 │   │   │           ├── index.js
 │   │   │           └── perfilMixin.js
 │   │   ├── model
-│   │   │   └── ModelRol.js
+│   │   │   ├── ModelRol.js
+│   │   │   └── modulosApi.js
 │   │   ├── plugins
 │   │   │   ├── MultiFilters.js
 │   │   │   └── vuetify.js
@@ -1156,6 +1172,7 @@
 │   │   │   ├── productosFormatterUtil.js
 │   │   │   ├── productosUtil.js
 │   │   │   ├── sessionManager.js
+│   │   │   ├── sucursalPeriodoUtil.js
 │   │   │   ├── transformarPermisosUtil.js
 │   │   │   ├── validacionesProductoPedidoUtil.js
 │   │   │   ├── validarCantidadCeroUtil.js
@@ -1331,8 +1348,7 @@
 │   │       │   │   ├── Index.vue
 │   │       │   │   ├── Modal
 │   │       │   │   │   ├── DetallesPedido.vue
-│   │       │   │   │   ├── Reordenamientos.vue
-│   │       │   │   │   └── Reordenar.vue
+│   │       │   │   │   └── Reordenamientos.vue
 │   │       │   │   └── Table
 │   │       │   │       └── Pedidos.vue
 │   │       │   ├── ConsultaPedidos
@@ -1402,6 +1418,7 @@
 │   │       │   │   ├── Layout
 │   │       │   │   │   └── LayoutImportarArchivoPlano.vue
 │   │       │   │   ├── reports
+│   │       │   │   │   ├── camposExcel.js
 │   │       │   │   │   ├── descargarPlanoCodigosReport.js
 │   │       │   │   │   ├── subirPlanoCodigosReport.js
 │   │       │   │   │   └── subirPlanoHomologacion.js
@@ -1412,6 +1429,8 @@
 │   │       │   │       ├── TableErrores.vue
 │   │       │   │       └── TableImportacion.vue
 │   │       │   ├── GestionOrdenes
+│   │       │   │   ├── Forms
+│   │       │   │   │   └── GestionFilter.vue
 │   │       │   │   ├── Index.vue
 │   │       │   │   └── Table
 │   │       │   │       └── PedidosTable.vue
@@ -1820,13 +1839,20 @@
 │   │           │       ├── Usuarios.vue
 │   │           │       └── UsuariosEliminados.vue
 │   │           └── UsuariosApi
+│   │               ├── helpers
+│   │               │   ├── permisosArbol.helper.js
+│   │               │   └── usuariosForm.helper.js
 │   │               ├── Index.vue
 │   │               ├── Modal
-│   │               │   ├── ModalAsociarSucursal.vue
+│   │               │   ├── CrearRolApi.vue
 │   │               │   └── ModalCrearUsuario.vue
+│   │               ├── Partials
+│   │               │   └── ItemVistaArbolApi.vue
+│   │               ├── Tab
+│   │               │   └── UsuariosApi.vue
 │   │               └── Table
-│   │                   ├── TableSucursalesAsociadas.vue
-│   │                   └── TableUsuarios.vue
+│   │                   ├── TableUsuarios.vue
+│   │                   └── UsuariosApiRoles.vue
 │   └── vite.config.js
 ├── README.md
 └── sonar-project.properties
