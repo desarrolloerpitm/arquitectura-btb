@@ -9,6 +9,7 @@
 │   ├── .env.ceinme
 │   ├── .env.cfim
 │   ├── .env.dev
+│   ├── .env.test
 │   ├── .eslintignore
 │   ├── .eslintrc.json
 │   ├── .gitignore
@@ -58,8 +59,9 @@
 │   ├── example.production.env
 │   ├── index.html
 │   ├── nodemon.json
-│   ├── package-lock.json
 │   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── pnpm-workspace.yaml
 │   ├── public
 │   │   └── downloads
 │   ├── README.md
@@ -68,7 +70,6 @@
 │       │   └── ApiURL.js
 │       ├── config
 │       │   ├── axios.config.js
-│       │   ├── axiosConfig.js
 │       │   ├── config.js
 │       │   ├── database.js
 │       │   ├── redisClient.js
@@ -105,7 +106,10 @@
 │       │   └── pedidosNovedadesListeners.js
 │       ├── index.js
 │       ├── middlewares
+│       │   ├── auth-apikey-open.middleware.js
 │       │   ├── auth-apikey-public.middleware.js
+│       │   ├── auth-apikey.middleware.js
+│       │   ├── auth-open.middleware.js
 │       │   ├── auth-public.middleware.js
 │       │   ├── auth.js
 │       │   ├── cacheMiddleware.js
@@ -122,12 +126,32 @@
 │       │   └── validationJsonSyntaxErrorHandler.js
 │       ├── models.js
 │       ├── modules
+│       │   ├── abiertas
+│       │   │   ├── auth
+│       │   │   │   ├── auth.controller.js
+│       │   │   │   ├── auth.routes.js
+│       │   │   │   ├── auth.service.js
+│       │   │   │   ├── shemas
+│       │   │   │   │   └── cambiar-contrasena.schema.js
+│       │   │   │   └── swagger.yaml
+│       │   │   └── parametrizacion-empresa
+│       │   │       ├── parametrizacion-empresa.controller.js
+│       │   │       ├── parametrizacion-empresa.routes.js
+│       │   │       ├── parametrizacion-empresa.service.js
+│       │   │       └── swagger.yaml
 │       │   ├── internals
+│       │   │   ├── auth
+│       │   │   │   ├── auth.controller.js
+│       │   │   │   ├── auth.routes.js
+│       │   │   │   ├── auth.service.js
+│       │   │   │   ├── helpers
+│       │   │   │   │   └── login.helper.js
+│       │   │   │   ├── schemas
+│       │   │   │   │   ├── iniciar-sesion.schema.js
+│       │   │   │   │   ├── recuperar-contrasena.schema.js
+│       │   │   │   │   └── swagger.yaml
+│       │   │   │   └── swagger.yaml
 │       │   │   ├── integrations
-│       │   │   │   ├── api-documentos
-│       │   │   │   │   ├── archivo-logs.service.js
-│       │   │   │   │   └── helpers
-│       │   │   │   │       └── archivo-logs.helper.js
 │       │   │   │   ├── api-municipios
 │       │   │   │   │   ├── api-municipios.controller.js
 │       │   │   │   │   ├── api-municipios.routes.js
@@ -315,6 +339,7 @@
 │       │   │   │   ├── bodegas-tipos-inventario
 │       │   │   │   │   ├── bodegas-tipos-Inventario.controller.js
 │       │   │   │   │   ├── bodegas-tipos-inventario.routes.js
+│       │   │   │   │   ├── bodegas-tipos-inventario.service.js
 │       │   │   │   │   ├── models
 │       │   │   │   │   │   ├── bodega-tipo-inventario.model.js
 │       │   │   │   │   │   └── swagger.yaml
@@ -592,7 +617,8 @@
 │       │   │   │   │   ├── factores-empaque.routes.js
 │       │   │   │   │   ├── factores-empaque.service.js
 │       │   │   │   │   ├── helpers
-│       │   │   │   │   │   └── filtros.helper.js
+│       │   │   │   │   │   ├── filtros.helper.js
+│       │   │   │   │   │   └── log-factor-empaque.helper.js
 │       │   │   │   │   ├── models
 │       │   │   │   │   │   ├── factor-empaque.model.js
 │       │   │   │   │   │   └── swagger.yaml
@@ -707,20 +733,16 @@
 │       │   │       │   │   ├── actualizar-usuario.helper.js
 │       │   │       │   │   ├── crear-usuario.helper.js
 │       │   │       │   │   ├── eliminar-usuario.helper.js
-│       │   │       │   │   ├── login.helper.js
 │       │   │       │   │   └── validar-perfil.helper.js
 │       │   │       │   ├── models
 │       │   │       │   │   ├── swagger.yaml
 │       │   │       │   │   └── usuario.model.js
 │       │   │       │   ├── schemas
 │       │   │       │   │   ├── activar-inactivar-usuario.schema.js
-│       │   │       │   │   ├── actualizar-contrasena-usuario.schema.js
 │       │   │       │   │   ├── actualizar-perfil-usuario.schema.js
 │       │   │       │   │   ├── actualizar-usuario.schema.js
 │       │   │       │   │   ├── crear-usuario.schema.js
 │       │   │       │   │   ├── eliminar-usuario.schema.js
-│       │   │       │   │   ├── iniciar-sesion.schema.js
-│       │   │       │   │   ├── olvidar-contrasena.schema.js
 │       │   │       │   │   └── swagger.yaml
 │       │   │       │   ├── swagger.yaml
 │       │   │       │   ├── usuarios.controller.js
@@ -741,10 +763,13 @@
 │       │   │           ├── usuarios-api.controller.js
 │       │   │           ├── usuarios-api.routes.js
 │       │   │           └── usuarios-api.service.js
-│       │   ├── provedores
-│       │   │   └── api-data-erp
-│       │   │       └── api-data-municipios.service.js
 │       │   ├── proveedores
+│       │   │   ├── api-data-erp
+│       │   │   │   └── api-data-municipios.service.js
+│       │   │   ├── api-documentos
+│       │   │   │   ├── api-documentos.service.js
+│       │   │   │   └── helpers
+│       │   │   │       └── archivo-logs.helper.js
 │       │   │   └── connekta
 │       │   │       ├── connekta.controller.js
 │       │   │       ├── connekta.routes.js
@@ -798,14 +823,15 @@
 │       ├── routes
 │       │   ├── index.js
 │       │   ├── internals.routes.js
+│       │   ├── open.routes.js
+│       │   ├── proveedores.routes.js
 │       │   └── publics.routes.js
 │       ├── services
 │       │   ├── axiosCancelable.js
 │       │   ├── createEmailTransport.js
 │       │   ├── sendMail.js
 │       │   ├── token.js
-│       │   ├── tokenApi.js
-│       │   └── tokenPassword.js
+│       │   └── tokenApi.js
 │       ├── sockets
 │       │   ├── index.js
 │       │   └── websocketHandlers.js
@@ -838,6 +864,7 @@
 │           ├── public-headers.util.js
 │           ├── respuesta-header.util.js
 │           ├── ruta-permiso.util.js
+│           ├── token-abierto.util.js
 │           └── token-publico.util.js
 ├── bitbucket-pipelines.yml
 ├── docker-compose.yml
@@ -861,8 +888,9 @@
 │   ├── example.env
 │   ├── example.production.env
 │   ├── index.html
-│   ├── package-lock.json
 │   ├── package.json
+│   ├── pnpm-lock.yaml
+│   ├── pnpm-workspace.yaml
 │   ├── public
 │   │   ├── ceimen.ico
 │   │   ├── favicon.ico
@@ -874,7 +902,6 @@
 │   │   │   ├── ApiURL.js
 │   │   │   └── Services
 │   │   │       ├── AxiosCancelable.js
-│   │   │       ├── AxiosConRefreshToken.js
 │   │   │       ├── IndexedDbService.js
 │   │   │       ├── ServiceComun.js
 │   │   │       ├── ServiceDocuments.js
@@ -882,6 +909,7 @@
 │   │   │       ├── ServiceGeneric.js
 │   │   │       ├── ServiceNode
 │   │   │       │   ├── ApiMunicipiosService.js
+│   │   │       │   ├── AuthService.js
 │   │   │       │   ├── CodigoAlternoService.js
 │   │   │       │   ├── ConductorService.js
 │   │   │       │   ├── ConnektaService.js
@@ -1014,7 +1042,9 @@
 │   │   │   │   │   └── useZonasPermisos.js
 │   │   │   │   ├── consultas
 │   │   │   │   │   ├── useConsultaCantidadesPermisos.js
+│   │   │   │   │   ├── useConsultaOrdenesCompraPermisos.js
 │   │   │   │   │   ├── useConsultaPedidoCancelado.js
+│   │   │   │   │   ├── useConsultaPedidosPendientesPermisos.js
 │   │   │   │   │   ├── useConsultaPedidosPermisos.js
 │   │   │   │   │   ├── useConsultaProductosPermisos.js
 │   │   │   │   │   └── useDocumentosPendientesPermisos.js
@@ -1049,6 +1079,9 @@
 │   │   │   ├── useScroll.js
 │   │   │   ├── useValidacionSucursalPedido.js
 │   │   │   └── useValidarItemPedido.js
+│   │   ├── config
+│   │   │   ├── axiosConfig.js
+│   │   │   └── axiosNodeConfig.js
 │   │   ├── ConfigError
 │   │   │   └── ConfigError.js
 │   │   ├── constants
@@ -1096,8 +1129,7 @@
 │   │   │       │   ├── consultaProductosMixin.js
 │   │   │       │   ├── documentosPendientesMixin.js
 │   │   │       │   ├── estadosPedidosMixin.js
-│   │   │       │   ├── index.js
-│   │   │       │   └── pedidosPendientesMixin.js
+│   │   │       │   └── index.js
 │   │   │       ├── gestionIndicadores
 │   │   │       │   ├── gestionIndicadoresMixin.js
 │   │   │       │   └── index.js
@@ -1819,6 +1851,8 @@
 │   │       └── Users
 │   │           ├── ForgotPassword.vue
 │   │           ├── GestionUsuario
+│   │           │   ├── helpers
+│   │           │   │   └── gestionUsuariosHelper.js
 │   │           │   ├── Index.vue
 │   │           │   ├── Modal
 │   │           │   │   ├── AsociarCompania.vue
