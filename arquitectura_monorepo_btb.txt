@@ -1,3 +1,6 @@
+├── .agents
+│   └── resources
+│       └── Estandares_de_desarrollo_ERP_2026.md
 ├── .env
 ├── .gitignore
 ├── .scannerwork
@@ -46,6 +49,8 @@
 │   │   ├── pedidoTrasportadora
 │   │   │   └── html.pug
 │   │   ├── recuperarContrasena
+│   │   │   └── html.pug
+│   │   ├── reporteCumplimientoPedidos
 │   │   │   └── html.pug
 │   │   ├── reporteDiario
 │   │   │   └── html.pug
@@ -127,6 +132,11 @@
 │       ├── models.js
 │       ├── modules
 │       │   ├── abiertas
+│       │   │   ├── api-documentos
+│       │   │   │   ├── api-documentos.controller.js
+│       │   │   │   ├── api-documentos.routes.js
+│       │   │   │   ├── api-documentos.service.js
+│       │   │   │   └── swagger.yaml
 │       │   │   ├── auth
 │       │   │   │   ├── auth.controller.js
 │       │   │   │   ├── auth.routes.js
@@ -354,6 +364,7 @@
 │       │   │   │   │   │   └── swagger.yaml
 │       │   │   │   │   ├── parametrizacion-criterios.controller.js
 │       │   │   │   │   ├── parametrizacion-criterios.routes.js
+│       │   │   │   │   ├── parametrizacion-criterios.service.js
 │       │   │   │   │   ├── schemas
 │       │   │   │   │   │   ├── actualizar-parametrizacion-criterio.schema.js
 │       │   │   │   │   │   ├── crear-parametrizacion-criterio.schema.js
@@ -484,6 +495,8 @@
 │       │   │   │   │   │   │   ├── validar-factor-empaque.helper.js
 │       │   │   │   │   │   │   ├── validar-productos.helper.js
 │       │   │   │   │   │   │   └── validar-sucursales-clinicas.helper.js
+│       │   │   │   │   │   ├── cumplimiento-pedido.helper.js
+│       │   │   │   │   │   ├── destinatarios-cumplimiento.helper.js
 │       │   │   │   │   │   ├── filtros-pedido-con-detalle.helper.js
 │       │   │   │   │   │   ├── filtros-por-estado.helper.js
 │       │   │   │   │   │   ├── filtros-por-usuario.helper.js
@@ -491,7 +504,8 @@
 │       │   │   │   │   │   ├── filtros.helper.js
 │       │   │   │   │   │   ├── gestion-ordenes.helper.js
 │       │   │   │   │   │   ├── interfazar-pedidos.helper.js
-│       │   │   │   │   │   └── pedidos-activos.helper.js
+│       │   │   │   │   │   ├── pedidos-activos.helper.js
+│       │   │   │   │   │   └── reporte-cumplimiento-pedidos.helper.js
 │       │   │   │   │   ├── models
 │       │   │   │   │   │   ├── pedido.model.js
 │       │   │   │   │   │   └── swagger.yaml
@@ -506,6 +520,7 @@
 │       │   │   │   │   │   ├── actualizar-producto-pedido.schema.js
 │       │   │   │   │   │   ├── actualizar-validadores-pedido.schema.js
 │       │   │   │   │   │   ├── aprobar-pedido.schema.js
+│       │   │   │   │   │   ├── buscar-cumplimiento.schema.js
 │       │   │   │   │   │   ├── buscar-historial.schema.js
 │       │   │   │   │   │   ├── consulta-pedidos.schema.js
 │       │   │   │   │   │   ├── crear-pedido.schema.js
@@ -514,9 +529,11 @@
 │       │   │   │   │   │   ├── preaprobar-pedido.schema.js
 │       │   │   │   │   │   └── swagger.yaml
 │       │   │   │   │   ├── services
+│       │   │   │   │   │   ├── buscar-pedidos-cumplimiento.service.js
 │       │   │   │   │   │   ├── buscar-productos-cantidades.service.js
 │       │   │   │   │   │   ├── crear-pedido-clinicas.service.js
 │       │   │   │   │   │   ├── crear-pedido.service.js
+│       │   │   │   │   │   ├── envio-cumplimiento-pedidos.service.js
 │       │   │   │   │   │   ├── notificaciones-pedidos.service.js
 │       │   │   │   │   │   └── pedidos-gestion-ordenes.service.js
 │       │   │   │   │   └── swagger.yaml
@@ -717,6 +734,8 @@
 │       │   │       │   │   └── swagger.yaml
 │       │   │       │   └── swagger.yaml
 │       │   │       ├── roles-api
+│       │   │       │   ├── helpers
+│       │   │       │   │   └── actualizar-roles-api.helper.js
 │       │   │       │   ├── models
 │       │   │       │   │   ├── rol-api.model.js
 │       │   │       │   │   └── swagger.yaml
@@ -767,16 +786,27 @@
 │       │   │   ├── api-data-erp
 │       │   │   │   └── api-data-municipios.service.js
 │       │   │   ├── api-documentos
+│       │   │   │   ├── api-documentos.controller.js
+│       │   │   │   ├── api-documentos.routes.js
 │       │   │   │   ├── api-documentos.service.js
-│       │   │   │   └── helpers
-│       │   │   │       └── archivo-logs.helper.js
+│       │   │   │   ├── helpers
+│       │   │   │   │   ├── archivo-logs.helper.js
+│       │   │   │   │   ├── construir-url-api-documentos.helper.js
+│       │   │   │   │   └── mime-type.helper.js
+│       │   │   │   └── swagger.yaml
 │       │   │   └── connekta
 │       │   │       ├── connekta.controller.js
 │       │   │       ├── connekta.routes.js
 │       │   │       ├── connekta.service.js
 │       │   │       ├── helpers
+│       │   │       │   ├── capturar-error-connekta.helper.js
 │       │   │       │   ├── contruir-url-connekta.helper.js
+│       │   │       │   ├── crear-json-entrada-almacen.helper.js
+│       │   │       │   ├── crear-json-transferencia-transito-entrada.helper.js
 │       │   │       │   └── filtros-connekta.helper.js
+│       │   │       ├── mappers
+│       │   │       │   ├── campos-entrada-almacen.mapper.js
+│       │   │       │   └── campos-transferencia-transito-entrada.mapper.js
 │       │   │       ├── Models
 │       │   │       │   └── swagger.yaml
 │       │   │       ├── schema
@@ -799,7 +829,10 @@
 │       │       │   ├── schema
 │       │       │   │   ├── connekta-items.schema.js
 │       │       │   │   ├── connekta.schema.js
-│       │       │   │   └── existencias-bodegas-lotes.schema.js
+│       │       │   │   ├── crear-entrada-almacen.schema.js
+│       │       │   │   ├── crear-transferencia-transito-entrada.schema.js
+│       │       │   │   ├── existencias-bodegas-lotes.schema.js
+│       │       │   │   └── transferenciaTransitoSalida.schema.js
 │       │       │   └── swagger.yaml
 │       │       ├── pedidos
 │       │       │   ├── pedidos.controller.js
@@ -818,6 +851,7 @@
 │       │           └── swagger.yaml
 │       ├── queues
 │       │   ├── connection.js
+│       │   ├── cumplimiento-pedidos.queue.js
 │       │   ├── index.js
 │       │   └── pedidos.queue.js
 │       ├── routes
@@ -840,6 +874,7 @@
 │       │   ├── crearReporteNovedades.js
 │       │   ├── desactivarFactorEmpaque.js
 │       │   ├── eliminarNotificaiconesLeidas.js
+│       │   ├── envioCumplimientoPedidos.js
 │       │   ├── expirarControlPlanos.js
 │       │   ├── generarProductosInactivos.js
 │       │   ├── inactivarPedidosExpirados.js
@@ -858,6 +893,8 @@
 │           ├── filtros.util.js
 │           ├── formateadorNumerico.util.js
 │           ├── integration-key.util.js
+│           ├── logo-email.util.js
+│           ├── mongoose-transaction.util.js
 │           ├── normaliza-texto.util.js
 │           ├── numbers.util.js
 │           ├── pagination.util.js
@@ -904,10 +941,10 @@
 │   │   │       ├── AxiosCancelable.js
 │   │   │       ├── IndexedDbService.js
 │   │   │       ├── ServiceComun.js
-│   │   │       ├── ServiceDocuments.js
 │   │   │       ├── ServiceEncabezado.js
 │   │   │       ├── ServiceGeneric.js
 │   │   │       ├── ServiceNode
+│   │   │       │   ├── ApiDocumentosService.js
 │   │   │       │   ├── ApiMunicipiosService.js
 │   │   │       │   ├── AuthService.js
 │   │   │       │   ├── CodigoAlternoService.js
@@ -1047,7 +1084,8 @@
 │   │   │   │   │   ├── useConsultaPedidosPendientesPermisos.js
 │   │   │   │   │   ├── useConsultaPedidosPermisos.js
 │   │   │   │   │   ├── useConsultaProductosPermisos.js
-│   │   │   │   │   └── useDocumentosPendientesPermisos.js
+│   │   │   │   │   ├── useDocumentosPendientesPermisos.js
+│   │   │   │   │   └── useEstadosPedidosPermisos.js
 │   │   │   │   ├── financiero
 │   │   │   │   │   └── useEstadoCuentaPermisos.js
 │   │   │   │   ├── integracion
@@ -1055,17 +1093,24 @@
 │   │   │   │   │   ├── useGestionOrdenesPermisos.js
 │   │   │   │   │   └── useImportarCodigosPermisos.js
 │   │   │   │   ├── logistica
-│   │   │   │   │   └── useEnviosPermisos.js
+│   │   │   │   │   ├── useDocumentoEntregaPermisos.js
+│   │   │   │   │   ├── useEnvioPermisos.js
+│   │   │   │   │   ├── useEnviosPermisos.js
+│   │   │   │   │   └── useReporteNovedadesPermisos.js
 │   │   │   │   ├── logs
 │   │   │   │   │   └── logSesion
 │   │   │   │   │       └── useLogSesionPermisos.js
 │   │   │   │   ├── pedidos
+│   │   │   │   │   ├── useDetalleFacturaPermisos.js
 │   │   │   │   │   ├── useGestionNovedadesPermisos.js
 │   │   │   │   │   ├── useGestionPedidosPermisos.js
 │   │   │   │   │   ├── useHistorialPermisos.js
 │   │   │   │   │   ├── useOrdenCompraPermisos.js
 │   │   │   │   │   ├── usePendienteAprobacionPermisos.js
+│   │   │   │   │   ├── useRegistrarNovedadesPermisos.js
 │   │   │   │   │   └── useSeguimientoPedidoPermisos.js
+│   │   │   │   ├── portafolio
+│   │   │   │   │   └── useDescargarPortafolioPermisos.js
 │   │   │   │   └── users
 │   │   │   │       ├── useUsuariosApiPermisos.js
 │   │   │   │       └── useUsuariosPermisos.js
@@ -1405,9 +1450,23 @@
 │   │       │   │   │   └── documentosPendientesHelper.js
 │   │       │   │   └── Index.vue
 │   │       │   ├── EstadosPedidos
+│   │       │   │   ├── constants
+│   │       │   │   │   └── estadosPedidos.js
+│   │       │   │   ├── Form
+│   │       │   │   │   └── FiltrarPedidos.vue
+│   │       │   │   ├── helpers
+│   │       │   │   │   ├── filtrosConsultaHelper.js
+│   │       │   │   │   └── pedidoHelper.js
 │   │       │   │   ├── Index.vue
-│   │       │   │   └── Modal
-│   │       │   │       └── DetallesPedido.vue
+│   │       │   │   ├── Layouts
+│   │       │   │   │   └── FiltrosConsulta.vue
+│   │       │   │   ├── Modal
+│   │       │   │   │   └── DetallesPedido.vue
+│   │       │   │   ├── reports
+│   │       │   │   │   └── descargarEstadosPedidosReport.js
+│   │       │   │   └── Table
+│   │       │   │       ├── DetallesPedidoTable.vue
+│   │       │   │       └── EstadosPedidosTable.vue
 │   │       │   ├── Factura.html
 │   │       │   ├── FormatoOrdenCompra
 │   │       │   │   ├── Index.vue
@@ -1606,8 +1665,9 @@
 │   │       │   ├── DetalleFactura
 │   │       │   │   ├── Index.vue
 │   │       │   │   └── Table
-│   │       │   │       └── Facturas.vue
-│   │       │   ├── DetalleFacturaPedido.vue
+│   │       │   │       ├── DetalleFacturaTable.vue
+│   │       │   │       ├── DetalleProductoTable.vue
+│   │       │   │       └── FacturasTable.vue
 │   │       │   ├── DetalleSeguimiento
 │   │       │   │   ├── helpers
 │   │       │   │   │   └── detalleSeguimientoHelper.js
@@ -1733,6 +1793,7 @@
 │   │       │   │   ├── Form
 │   │       │   │   │   └── ListarPedidos.vue
 │   │       │   │   ├── helpers
+│   │       │   │   │   ├── cumplimientoHelper.js
 │   │       │   │   │   └── seguimientoPedidoHelper.js
 │   │       │   │   ├── Index.vue
 │   │       │   │   └── Table
@@ -1879,12 +1940,14 @@
 │   │               ├── Index.vue
 │   │               ├── Modal
 │   │               │   ├── CrearRolApi.vue
+│   │               │   ├── ModalAsociarSucursal.vue
 │   │               │   └── ModalCrearUsuario.vue
 │   │               ├── Partials
 │   │               │   └── ItemVistaArbolApi.vue
 │   │               ├── Tab
 │   │               │   └── UsuariosApi.vue
 │   │               └── Table
+│   │                   ├── TableSucursalesAsociadas.vue
 │   │                   ├── TableUsuarios.vue
 │   │                   └── UsuariosApiRoles.vue
 │   └── vite.config.js
